@@ -16,12 +16,10 @@ Additional requirements for our store implementation:
 - User login and registration system.
 - Product catalog with categories.
 - Shopping cart functionality.
-- Checkout process (without payment integration at this stage).
 - Admin panel to add, edit, and delete products.
-- Order history per user.
 - Basic stock control.
-- **BMI (Body Mass Index) Calculator.**
-- **Macronutrients Calculator** (estimates daily needs for protein, carbohydrates, and fats based on user profile).
+- Admin management
+- **BMI and Macronutrients Calculator** (estimates daily needs for protein, carbohydrates, and fats based on user profile).
 
 ## 2. Project Description
 
@@ -32,11 +30,11 @@ We are developing a responsive web application that allows users to browse, sear
 - Product browsing with search and filter options.
 - Shopping cart management (add/remove/update items).
 - Admin dashboard for product management (add, edit, delete products).
-- User order history page.
+- Admin management.
+- Product page displaying its name, description and price.
+- All functionalities must offer accessibility features
 - **BMI Calculator page:**  
-  Users input their height and weight, and the application calculates and displays their Body Mass Index (BMI). Also, it is possible to input average exercise level, exercise duration and frequency alongside with body fat percentage in order to calculate the adequate macro-nutrients
-- **Macronutrients Calculator page:**  
-  Users input their height, weight, age, gender, and activity level. The system calculates and returns recommended daily intake of proteins, carbohydrates, and fats.
+  Users input their height and weight, and the application calculates and displays their Body Mass Index (BMI). Also, it is possible to input average exercise level, exercise duration and frequency alongside with body fat percentage in order to calculate the adequate macro-nutrients.
 
 ### Navigation Diagram
 
@@ -57,8 +55,24 @@ We are developing a responsive web application that allows users to browse, sear
 | BMI/MACROS Calculator    | Mockup9     |  
 
 ### Information Saved in the Server
-- User Information (name, email, password hash, address).
-- Product Information (name, description, price, category, stock quantity, image URL).
-- Order Information (user ID, list of purchased products, quantities, total price, order date).
+- The admin records:
+	- Name
+	- Id
+	- Phone
+	- Email
+- Customer Information:
+	- Name
+	- Id
+	- Address
+	- Phone
+	- Email
+- Product Information
+	- Name
+	- Id
+	- Photo
+	- Description
+	- Price
+	- Quantity
+	- Quantity Sold
 
-> The BMI and Macronutrient calculator results will **not** be saved on the server; they are generated dynamically based on user input.
+The BMI and Macronutrient calculator results won't be saved on the server; they are generated dynamically based on user input.
