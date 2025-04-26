@@ -49,11 +49,10 @@ We are developing a responsive web application that allows users to browse, sear
 | Home Page                | Mockup3     |  
 | Product Page             | Mockup4     |  
 | Customers Management     | Mockup5     |  
-| Checkout Page            | Mockup6     |  
-| Admin Dashboard          | Mockup7     |  
-| Admin Management         | Mockup8     |  
-| Product Management       | Mockup9     |  
-| BMI/MACROS Calculator    | Mockup10     |  
+| Admin Dashboard          | Mockup6     |  
+| Admin Management         | Mockup7     |  
+| Product Management       | Mockup8     |  
+| BMI/MACROS Calculator    | Mockup9     |  
 
 ### Information Saved in the Server
 - The admin records:
