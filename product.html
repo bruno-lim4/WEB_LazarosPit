@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -34,7 +37,30 @@
         </div>
     </header>
     
-    
+    <div class="product-page">
+        <div class="left">
+            <img src="./imgs/image.png" alt="product image">
+            <p class="product-name">
+                Name
+            </p>
+            <p class="product-price">
+                R$ 999.99
+            </p>
+        </div>
+        <div class="right">
+            <p class="product-description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quidem laudantium ad consequatur sed quam maiores, ipsam velit culpa aut autem laborum, illo, quia pariatur dolorum? Hic amet, adipisci laboriosam vero consequuntur cum ducimus veritatis nostrum excepturi placeat ipsam, minus quidem delectus. Nulla minima doloremque vel iste. Explicabo facilis natus impedit id repellendus harum iste exercitationem assumenda quam vitae blanditiis qui ea amet deleniti officia perspiciatis laboriosam repudiandae rerum nobis, rem perferendis provident expedita laborum! Nulla vel voluptatibus nesciunt officia eveniet sunt sint dolorem assumenda! Ex fugit odit provident ullam nemo, quas rem impedit harum saepe! Dicta quos qui aliquid.
+            </p>
+            <div class="product-quant">
+                <label for="productQuantity">Quantity: </label>
+                <input type="number" name="productQuantity" id="productQuantity" min="1">
+            </div>
+            <button class="product-addCart">
+                Add to the cart
+                <img src="./imgs/shopping-cart.png" alt="shopping-cart icon">
+            </button>
+        </div>
+    </div>
 
 </body>
 </html>

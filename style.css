@@ -8,6 +8,11 @@ body {
 
 * {
     margin: 0;
+    font-family: 'Inter', Courier, monospace;
+}
+
+header {
+    color: white;
 }
 
 .nav, .logo, .search-bar, .login-reg {
@@ -120,6 +125,7 @@ body {
     background-color: rgb(50, 50, 50);
     font-size: 60px;
     font-weight: bolder;
+    color: white;
 }
 
 .page-bar {
@@ -213,3 +219,83 @@ body {
     margin-top: 20px;
     cursor: pointer;
 }
+
+.product-page {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    margin: 100px auto;
+    max-width: 80%;
+    border-radius: 30px;
+
+    padding: 30px 30px;
+}
+
+.product-page > .left {
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto 30px auto;
+}
+
+.product-page > .left > .product-price {
+    color: #00cc00;
+    font-size: 2rem;
+}
+
+.product-page > .left > img {
+    margin-bottom: 30px;
+    min-width: 200px;
+}
+
+.product-page > .left > p {
+    margin-left: 15px;
+}
+
+.product-page > .left > .product-name {
+    margin-bottom: 20px;
+}
+
+.product-page > .right > .product-addCart > img {
+    max-width: 2rem;
+    margin-left: 10px;
+}
+
+.product-page > .right {
+    max-width: 70%;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-page > .right > .product-quant {
+    font-size: 2rem;
+}
+
+.product-page > .right > .product-quant > input {
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    background-color: #ccc;
+    max-width: 50px;
+}
+
+
+.product-page > .right > .product-addCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto 0 0;
+    font-size: 1.3rem;
+
+    background-color: #00cc00;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
