@@ -28,7 +28,7 @@ We are developing a responsive web application that allows users to browse, sear
 ### Functionalities 
 - User authentication (sign up, login).
   
-  A card is displayed in a dedicated page which contains input fields for the user to type in its email and password, both the login and register pages are acessible by the home page. Registration also requires the user to input its address nad phone number.
+  A card is displayed in a dedicated page which contains input fields for the user to type in its email and password, both the login and register pages are acessible by the home page. Registration also requires the user to input its address and phone number.
 - Product browsing with search and filter options.
 
   A search bar is displayed in the navbar of the main pages, such as home, this search bar will allow the user to type word related to the products, making it easier to browse through the available items. The text will be used as a filter for the database query.
