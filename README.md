@@ -34,13 +34,13 @@ We are developing a responsive web application that allows users to browse, sear
   A search bar is displayed in the navbar of the main pages, such as home, this search bar will allow the user to type words related to the products, making it easier to browse through the available items. The text will be used as a filter for the database query.
 - Cart management (add/remove items).
 
-  The user will be able to add items to its cart while in a specific product page as it will contain a quantity input field and a add button. Items can also be removed from the cart by acessing the cart page, in the right side of the main navbar.
+  The user will be able to add items to its cart while in a specific product page as it will contain a quantity input field and an add button. Items can also be removed from the cart by acessing the cart page, in the right side of the main navbar.
 - Admin dashboard for product management (add, edit, delete products).
 
-  As an admin, a page will be acessible through the Admin Dashboard which will contain a table directly linked to the site database, this page will allow the admin to make CRUD operations in this table, modifying a product name, description, price and quantity available.
+  As an admin, a page will be acessible through the Admin Dashboard which will contain a table directly linked to the site database, this page will allow the admin to make CRUD operations in this table, such as modifying a product name, description, price and quantity available.
 - Admin management.
 
-  As an admin, a page will be acessible through the Admin Dashboard which will contain a table directly linked to the site database, this page will allow the admin to make CRUD operations in this table, modifying the admins of the site, their name, emails and other personal information. This will also allow for new admins to be added.
+  As an admin, a page will be acessible through the Admin Dashboard which will contain a table directly linked to the site database, this page will allow the admin to make CRUD operations in this table, such as modifying the admins of the site, their name, emails and other personal information. This will also allow for new admins to be added.
 - Product page displaying its name, description and price.
 
   By clicking on a product card in the home page, the user will be redirected to the product page, containing its image, price, name, description and the option to add a select amount of it to the cart.
