@@ -25,17 +25,30 @@ Additional requirements for our store implementation:
 
 We are developing a responsive web application that allows users to browse, search, and purchase supplements online, as well as calculate their BMI and daily macronutrient needs.
 
-### Functionalities to Implement
-- User authentication (sign up, login, logout).
+### Functionalities 
+- User authentication (sign up, login).
+  
+  A card is displayed in a dedicated page which contain input fields for the user to type in its email and password, both the login and register pages are acessible by the home page. Registration also requires the user to input its address nad phone number.
 - Product browsing with search and filter options.
-- Shopping cart management (add/remove/update items).
+
+  A search bar is displayed in the navbar of the main pages, such as home, this search bar will allow the user to type word related to the products, making it easier to browse through the available items. The text will be used as a filter for the database query.
+- Cart management (add/remove items).
+
+  The user will be able to add items to its cart while in a specific product page as it will contain a quantity input field and a add button. Items can also be removed from the cart by acessing the cart page, in the right side of the main navbar.
 - Admin dashboard for product management (add, edit, delete products).
+
+  As an admin, a page will be acessible through the Admin Dashboard which will contain a table directly linked to the site database, this page will allow the admin to make CRUD operations in this table, modifying a product name, description, price and quantity available.
 - Admin management.
+
+  As an admin, a page will be acessible through the Admin Dashboard which will contain a table directly linked to the site database, this page will allow the admin to make CRUD operations in this table, modifying the admins of the site, their name, emails and other personal information. This will also allow for new admins to be added.
 - Product page displaying its name, description and price.
+
+  By clicking on a product card in the home page, the user will be redirected to the product page, containing its image, price, name, description and the option to add a select amount of it to the cart.
 - All functionalities must offer accessibility features
+
+  This is made by the addition of alternative description for images.
 - **BMI Calculator page:**  
   Users input their height and weight, and the application calculates and displays their Body Mass Index (BMI). Also, it is possible to input average exercise level, exercise duration and frequency alongside with body fat percentage in order to calculate the adequate macro-nutrients.
-
 ### Navigation Diagram
 
 ![](https://cdn.discordapp.com/attachments/1365750322546606204/1365763990982099047/NavDiagram.png?ex=680e7e56&is=680d2cd6&hm=ac74bbe5ce39134035cc821ca848c3690a6b04e50d92cf6d75e855f1b175c958&=)
@@ -49,7 +62,7 @@ We are developing a responsive web application that allows users to browse, sear
 | Home Page                | Mockup3     |  
 | Product Page             | Mockup4     |  
 | Customers Management     | Mockup5     |  
-| Checkout Page            | Mockup6     |  
+| Cart Page                | Mockup6     |  
 | Admin Dashboard          | Mockup7     |  
 | Admin Management         | Mockup8     |  
 | Product Management       | Mockup9     |  
