@@ -55,7 +55,8 @@ We are developing a responsive web application that allows users to browse, sear
 | Product Management       | Mockup9     |  
 | BMI/MACROS Calculator    | Mockup10     |  
 
-Link for mockups in figma: https://www.figma.com/design/2h4s1tf1CYpqzjQtGRLKmG/Lazaros-Pit?node-id=0-1&m=dev&t=Zwt4Nz8rAqG4uodn-1
+Link for mockups in figma: 
+https://www.figma.com/design/2h4s1tf1CYpqzjQtGRLKmG/Lazaros-Pit?node-id=0-1&m=dev&t=Zwt4Nz8rAqG4uodn-1
 ### Information Saved in the Server
 - The admin records:
 	- Name
