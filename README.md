@@ -31,7 +31,7 @@ We are developing a responsive web application that allows users to browse, sear
   A card is displayed in a dedicated page which contains input fields for the user to type in its email and password, both the login and register pages are acessible by the home page. Registration also requires the user to input its address and phone number.
 - Product browsing with search and filter options.
 
-  A search bar is displayed in the navbar of the main pages, such as home, this search bar will allow the user to type word related to the products, making it easier to browse through the available items. The text will be used as a filter for the database query.
+  A search bar is displayed in the navbar of the main pages, such as home, this search bar will allow the user to type words related to the products, making it easier to browse through the available items. The text will be used as a filter for the database query.
 - Cart management (add/remove items).
 
   The user will be able to add items to its cart while in a specific product page as it will contain a quantity input field and a add button. Items can also be removed from the cart by acessing the cart page, in the right side of the main navbar.
