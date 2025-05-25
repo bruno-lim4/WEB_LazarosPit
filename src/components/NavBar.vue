@@ -11,7 +11,7 @@
         </v-col>
 
         <!-- Busca -->
-        <v-col cols="6" class="d-flex justify-center">
+        <v-col cols="6" class="d-flex justify-center" >
           <v-text-field
             v-model="pesquisa"
             append-inner-icon="mdi-magnify"
@@ -19,7 +19,8 @@
             variant="solo"
             label="Busca"
             hide-details
-            style="max-width: 400px"
+            style="max-width: 400px;"
+            bg-color="white"
           />
         </v-col>
 
