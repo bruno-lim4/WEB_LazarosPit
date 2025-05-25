@@ -20,3 +20,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .bg-dark {
+    background-color: black;
+    min-height: 100vh;
+  }
+</style>
