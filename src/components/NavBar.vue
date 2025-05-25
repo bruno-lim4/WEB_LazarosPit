@@ -23,7 +23,7 @@
 
         <!-- Login e Carrinho (escondido em telas <= 735px) -->
         <v-col cols="3" class="login-cart-col">
-          <v-btn variant="text" class="text-white">
+          <v-btn variant="text" class="text-white" @click="goToLoginPage">
             <v-icon class="mr-1">mdi-account</v-icon>
             <div class="d-flex flex-column text-left" style="line-height: 1">
               <small>Register</small>
@@ -88,6 +88,11 @@ export default {
       this.$emit('buscaFoiRealizada', newValue)
     },
   },
+  methods: {
+    goToLoginPage() {
+      this.$router.push({name: 'LoginPage'})
+    }
+  }
 }
 </script>
 
