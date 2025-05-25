@@ -2,7 +2,7 @@
     <v-container fluid class="px-15">
       <v-row>
         <!-- Coluna esquerda: 2/3 da largura -->
-        <v-col cols="12" md="8">
+        <v-col cols="12" lg="8">
           <v-btn variant='text' color="green" class="mb-4" @click="$router.back()">
             <v-icon left>mdi-arrow-left</v-icon> Back to Products
           </v-btn>
@@ -62,7 +62,7 @@
           </v-card>
         </v-col>
         <!-- Coluna direita: 1/3 da largura -->
-        <v-col cols="12" md="4">
+        <v-col cols="12" lg="4">
           <v-card color="#1e293b" dark elevation="2" class="pa-10">
             <h1 class="mb-10">Total sum</h1>
   
