@@ -1,5 +1,5 @@
 <template>
-    <v-card
+  <v-card
     class="mx-auto mb-3"
     max-width="344"
   >
@@ -23,14 +23,12 @@
         block
         rounded="lg"
       >
-      <v-icon>
-        mdi-cart
-      </v-icon>
-      <p class="ml-3">Add to cart</p>
-    </v-btn>
+        <v-icon>
+          mdi-cart
+        </v-icon>
+        <p class="ml-3">Add to cart</p>
+      </v-btn>
     </v-card-actions>
-    
-
   </v-card>
 </template>
 

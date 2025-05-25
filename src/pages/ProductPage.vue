@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid>
+  <v-container fluid>
     <v-row>
       <v-btn flat text @click="goToHomePage">
         <v-icon>
@@ -8,89 +8,82 @@
         Back to Products
       </v-btn>
     </v-row>
-    
+      
     <v-row>
-    <!-- Coluna da imagem -->
-     
-    <v-col cols="12" md="6">
-      <v-img src="image" />
-    </v-col>
+      <!-- Coluna da imagem -->
+      
+      <v-col cols="12" md="6">
+        <v-img src="image" />
+      </v-col>
 
-    <!-- Coluna dos detalhes -->
-    <v-col cols="12" md="6" class="d-flex flex-column">
+      <!-- Coluna dos detalhes -->
+      <v-col cols="12" md="6" class="d-flex flex-column">
+        <v-sheet> <!-- Container para título, avaliações, preço -->
+          <v-row>
+            <v-col>
+              <h1>Nome do Produto</h1>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <p>$ 299.99</p>
+            </v-col>
+          </v-row>
+        </v-sheet>
+        
+        <v-divider class="my-4" />
 
-      <v-sheet> <!-- Container para título, avaliações, preço -->
+        <!-- Descrição -->
         <v-row>
           <v-col>
-            <h1>Nome do Produto</h1>
-            
-            <!-- Preço destacado -->
+            <v-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, temporibus. Porro est molestiae accusantium corrupti totam impedit, nihil sed voluptas iste omnis, tempora ab optio pariatur deleniti, non placeat dolorum.</v-text>
           </v-col>
         </v-row>
-        <v-row>
-            <v-col>
-                <p>$ 299.99</p>
-            </v-col>
-        </v-row>
-      </v-sheet>
-      
-      <v-divider class="my-4" />
-
-      <!-- Descrição -->
-      <v-row>
-        <v-col>
-      <v-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, temporibus. Porro est molestiae accusantium corrupti totam impedit, nihil sed voluptas iste omnis, tempora ab optio pariatur deleniti, non placeat dolorum.</v-text>
-        </v-col>
-        </v-row>
-    
         <div class="flex-grow-1"></div>
-      <!-- Quantidade -->
-       <v-container>
-            <v-row>
-                <v-col>
-                    <h2>Quantity:</h2>
-                </v-col>
-            </v-row>
-            <v-row align="center">
-              <v-col cols="auto" class="d-flex align-center">
-    <v-btn
-      @click="quantity = Math.max(quantity - 1, 1)"
-      aria-label="Decrease quantity"
-      flat
-    >
-      <v-icon>mdi-minus</v-icon>
-    </v-btn>
-
-    <div class="quantity-display mx-3">{{ quantity }}</div>
-
-    <v-btn
-      flat
-      @click="quantity++"
-      aria-label="Increase quantity"
-    >
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
-  </v-col>
-
-            </v-row>
-            <v-row cols="auto">
-             Total: R$ {{ (quantity * price).toFixed(2) }}
-            </v-row>
+        <!-- Quantidade -->
+        <v-container>
+          <v-row>
+            <v-col>
+              <h2>Quantity:</h2>
+            </v-col>
+          </v-row>
+          <v-row align="center">
+            <v-col cols="auto" class="d-flex align-center">
+              <v-btn
+                @click="quantity = Math.max(quantity - 1, 1)"
+                aria-label="Decrease quantity"
+                flat
+              >
+                <v-icon>mdi-minus</v-icon>
+              </v-btn>
+              <div class="quantity-display mx-3">{{ quantity }}</div>
+              <v-btn
+                flat
+                @click="quantity++"
+                aria-label="Increase quantity"
+              >
+                <v-icon>mdi-plus</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row cols="auto">
+            Total: R$ {{ (quantity * price).toFixed(2) }}
+          </v-row>
         </v-container>
 
-      <!-- Botão adicionar ao carrinho -->
-      <v-btn color="green" block rounded="lg" @click="addToCart">
-        <v-icon left>mdi-cart</v-icon>
-        Add to Cart
-      </v-btn>
+        <!-- Botão adicionar ao carrinho -->
+        <v-btn color="green" block rounded="lg" @click="addToCart">
+          <v-icon left>mdi-cart</v-icon>
+          Add to Cart
+        </v-btn>
 
-      <v-row class="mt-2" justify="space-between">
-        <v-col cols="auto">60 servings per container</v-col>
-        <v-col cols="auto" class="green--text">In Stock</v-col>
-      </v-row>
-    </v-col>
-  </v-row>
-</v-container>
+        <v-row class="mt-2" justify="space-between">
+          <v-col cols="auto">60 servings per container</v-col>
+          <v-col cols="auto" class="green--text">In Stock</v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
   
 <script>

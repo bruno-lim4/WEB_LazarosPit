@@ -50,31 +50,31 @@
   </v-app-bar>
   <!-- Drawer lateral -->
   <v-navigation-drawer
-      v-model="drawer"
-      temporary
-      right
-    >
-      <v-list>
-        <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-account</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Login / Register</v-list-item-title>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-cart</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Carrinho</v-list-item-title>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-calculator</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Calculadora MACROS</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    v-model="drawer"
+    temporary
+    right
+  >
+    <v-list>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon>mdi-account</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>Login / Register</v-list-item-title>
+      </v-list-item>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon>mdi-cart</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>Carrinho</v-list-item-title>
+      </v-list-item>
+      <v-list-item link>
+        <v-list-item-icon>
+          <v-icon>mdi-calculator</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>Calculadora MACROS</v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
