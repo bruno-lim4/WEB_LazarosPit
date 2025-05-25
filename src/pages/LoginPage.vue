@@ -89,12 +89,12 @@ data() {
     password: '',
     valid: false,
     emailRules: [
-        v => !!v || 'Email é obrigatório',
-        v => /.+@.+\..+/.test(v) || 'Email deve ser válido',
+        v => !!v || 'Email is required',
+        v => /.+@.+\..+/.test(v) || 'Invalid email',
     ],
     passwordRules: [
-        v => !!v || 'Senha é obrigatória',
-        v => v.length >= 6 || 'Senha deve ter no mínimo 6 caracteres',
+        v => !!v || 'Password is required',
+        v => v.length >= 6 || 'Minimum 6 characters',
     ],
     };
 },

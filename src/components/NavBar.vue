@@ -17,7 +17,7 @@
             append-inner-icon="mdi-magnify"
             density="compact"
             variant="solo"
-            label="Busca"
+            label="Search"
             hide-details
             style="max-width: 400px;"
             bg-color="white"

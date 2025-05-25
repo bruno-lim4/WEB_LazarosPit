@@ -114,8 +114,8 @@
             elevation="0"
           >
             <v-icon color="green" size="28">mdi-fish</v-icon>
-            <div class="mt-2 font-weight-bold">Protein</div>
-            <div>{{ protein }}g</div>
+            <div class="mt-2">Protein</div>
+            <div class="font-weight-bold">{{ protein }}g</div>
           </v-sheet>
   
           <v-sheet
@@ -125,9 +125,9 @@
             width="30%"
             elevation="0"
           >
-            <v-icon color="orange" size="28">mdi-pizza</v-icon>
-            <div class="mt-2 font-weight-bold">Carbs</div>
-            <div>{{ carbs }}g</div>
+            <v-icon color="orange" size="28">mdi-baguette</v-icon>
+            <div class="mt-2">Carbs</div>
+            <div class="font-weight-bold">{{ carbs }}g</div>
           </v-sheet>
   
           <v-sheet
@@ -137,9 +137,9 @@
             width="30%"
             elevation="0"
           >
-            <v-icon color="blue" size="28">mdi-french-fries</v-icon>
-            <div class="mt-2 font-weight-bold">Fats</div>
-            <div>{{ fats }}g</div>
+            <v-icon color="blue" size="28">mdi-food</v-icon>
+            <div class="mt-2">Fats</div>
+            <div class="font-weight-bold">{{ fats }}g</div>
           </v-sheet>
         </v-row>
       </div>
@@ -201,6 +201,7 @@ export default {
 <style scoped>
 .font-weight-bold {
 font-weight: 700;
+font-size: 1.6rem !important;
 }
 </style>
   
