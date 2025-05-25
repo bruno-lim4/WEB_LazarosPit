@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="px-15 mt-8">
     <v-row>
-      <v-btn flat text @click="goToHomePage">
+      <v-btn flat variant='text' @click="goToHomePage" color="green">
         <v-icon>
           mdi-arrow-left
         </v-icon>
@@ -11,14 +11,14 @@
       
     <v-row>
       <!-- Coluna da imagem -->
-      
+
       <v-col cols="12" md="6">
         <v-img src="image" />
       </v-col>
 
       <!-- Coluna dos detalhes -->
       <v-col cols="12" md="6" class="d-flex flex-column">
-        <v-sheet> <!-- Container para título, avaliações, preço -->
+        <v-sheet class="bg-background"> <!-- Container para título, avaliações, preço -->
           <v-row>
             <v-col>
               <h1>Nome do Produto</h1>
@@ -40,8 +40,9 @@
           </v-col>
         </v-row>
         <div class="flex-grow-1"></div>
+        <v-divider class="my-4" />
         <!-- Quantidade -->
-        <v-container>
+        <v-container class="pa-0 ma-0 mb-6">
           <v-row>
             <v-col>
               <h2>Quantity:</h2>
@@ -67,7 +68,8 @@
             </v-col>
           </v-row>
           <v-row cols="auto">
-            Total: R$ {{ (quantity * price).toFixed(2) }}
+            <v-col cols="12">Total: R$ {{ (quantity * price).toFixed(2) }}</v-col>
+            
           </v-row>
         </v-container>
 
