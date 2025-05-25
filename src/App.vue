@@ -25,7 +25,7 @@ export default {
   data () {
     return {
       userIsLoggedIn: true,
-      userIsAdmin: false,
+      userIsAdmin: true,
     }
   }
 }

@@ -33,7 +33,13 @@
               <strong>Login</strong>
             </div>
           </v-btn>
-          <v-btn icon variant="text" class="text-white mr-5" @click="logUserOut" v-if="userIsLoggedIn">
+          <v-btn variant="text" class="text-white" @click="goToAdminPage" v-if="userIsAdmin">
+            <v-icon class="mr-1">mdi-account</v-icon>
+            <div class="d-flex flex-column text-left" style="line-height: 1">
+              <small>Admin</small>
+            </div>
+          </v-btn>
+          <v-btn variant="text" class="text-white mr-5" @click="logUserOut" v-if="userIsLoggedIn">
             <v-icon class="mr-1">mdi-exit-run</v-icon>
             <div class="d-flex flex-column text-left" style="line-height: 1">
               <small>Log Out</small>
@@ -61,6 +67,12 @@
     right
   >
     <v-list>
+      <v-list-item v-if="userIsAdmin" @click="goToAdminPage" link>
+        <v-list-item-icon>
+          <v-icon>mdi-account</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>Admin</v-list-item-title>
+      </v-list-item>
       <v-list-item v-if="!userIsLoggedIn" @click="goToLoginPage" link>
         <v-list-item-icon>
           <v-icon>mdi-account</v-icon>
@@ -126,6 +138,9 @@ export default {
     goToCalculatorPage() {
       this.$router.push({ name: 'CalculatorPage' })
     },
+    goToAdminPage() {
+      this.$router.push({ name: 'AdminDashboard' })
+    },
     logUserOut() {
       this.$emit("logUserOut");
     }
@@ -152,7 +167,7 @@ export default {
 }
 
 /* Esconde login/carrinho em telas pequenas */
-@media (max-width: 880px) {
+@media (max-width: 1100px) {
   .login-cart-col {
     display: none !important;
   }
@@ -162,7 +177,7 @@ export default {
 }
 
 /* Esconde ícone do menu em telas grandes */
-@media (min-width: 881px) {
+@media (min-width: 1100px) {
   .menu-icon {
     display: none !important;
   }
