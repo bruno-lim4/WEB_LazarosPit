@@ -22,6 +22,7 @@
         color="green"
         block
         rounded="lg"
+        @click.stop="addToCart"
       >
         <v-icon>
           mdi-cart
@@ -41,6 +42,11 @@ export default {
             required: true,
         },
     },
+    methods: {
+      addToCart() {
+        console.log('adicionei ao carrinho')
+      }
+    }
 }
 </script>
   

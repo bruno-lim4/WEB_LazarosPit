@@ -14,6 +14,7 @@
         <v-select
         :items="categories"
         label="Categories"
+        variant="underlined"
         v-model="selectedCategory"
         class="ma-auto"
         style="max-width: 300px"

@@ -26,7 +26,7 @@
           </v-row>
           <v-row>
             <v-col>
-              <p>$ 299.99</p>
+                <span style="color:#4CAF50; font-size:1.6rem">$ 299.99</span>
             </v-col>
           </v-row>
         </v-sheet>

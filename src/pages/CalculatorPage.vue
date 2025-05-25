@@ -154,9 +154,9 @@ export default {
         return {
         calculado: false,
         gender: 'male',
-        age: 3,
-        height: 3,
-        weight: 3,
+        age: 30,
+        height: 180,
+        weight: 80,
         activityLevel: { 
             label: 'Moderately active (exercise 3-5 days/week)', 
             value: 'moderately_active' 
@@ -169,10 +169,10 @@ export default {
             { label: 'Very active (hard exercise & physical job)', value: 'very_active' },
         ],
 
-        totalCalories: 60,
-        protein: 5,
-        carbs: 6,
-        fats: 2,
+        totalCalories: 0,
+        protein: 0,
+        carbs: 0,
+        fats: 0,
         };
     },
     methods: {
