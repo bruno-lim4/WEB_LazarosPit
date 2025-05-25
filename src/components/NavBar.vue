@@ -4,8 +4,10 @@
       <v-row align="center" justify="space-between" no-gutters>
         <!-- Logo -->
         <v-col cols="3" class="d-flex align-center">
-          <v-icon icon="$vuetify"></v-icon>
-          <v-app-bar-title class="ml-2 login-title-col">Lazaro's Pit</v-app-bar-title>
+          <v-btn @click="goToHomePage">
+            <v-icon icon="$vuetify"></v-icon>
+            <v-app-bar-title class="ml-2 login-title-col">Lazaro's Pit</v-app-bar-title>
+          </v-btn>
         </v-col>
 
         <!-- Busca -->
@@ -91,6 +93,9 @@ export default {
   methods: {
     goToLoginPage() {
       this.$router.push({name: 'LoginPage'})
+    },
+    goToHomePage() {
+      this.$router.push({ name: 'HomePage' })
     }
   }
 }
