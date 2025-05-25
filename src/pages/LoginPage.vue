@@ -67,11 +67,11 @@
         <v-card-text class="text-center">
           Don't have an account?
           <a
+            @click="goToRegisterPage"
             class="text-decoration-none"
-            href="#"
             rel="noopener noreferrer"
             target="_blank"
-            style="color:#4CAF50"
+            style="cursor:pointer; color:#4CAF50"
           >
             Sign up!
           </a>
@@ -105,6 +105,9 @@ methods: {
         // Aqui você pode colocar a chamada à API para autenticar
     }
     },
+    goToRegisterPage() {
+        this.$router.push({name: 'RegisterPage'})
+    }
 },
 };
 </script>
