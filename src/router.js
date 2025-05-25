@@ -5,6 +5,12 @@ import HomePage from '@/pages/HomePage.vue'
 
 const routes = [
   { path: '/', name: 'HomePage', component: HomePage },
+  {
+    path: '/product/:id',
+    name: 'ProductPage',
+    component: () => import('@/pages/ProductPage.vue'),
+  }
+  
 ]
 
 const router = createRouter({
