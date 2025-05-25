@@ -6,6 +6,7 @@ import ProductPage from '@/pages/ProductPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import AdminDashboard from '@/pages/AdminDashboard.vue'
+import CartPage from '@/pages/CartPage.vue'
 
 const routes = [
   { path: '/', name: 'HomePage', component: HomePage },
@@ -28,10 +29,13 @@ const routes = [
     path: '/admin',
     name: 'AdminDashboard',
     component: AdminDashboard,
+  },
+  {
+    path: '/cart',
+    name: 'CartPage',
+    component: CartPage,
   }
-  
 ]
-
 const router = createRouter({
   history: createWebHistory(),
   routes,

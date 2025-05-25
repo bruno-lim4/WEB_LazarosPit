@@ -35,7 +35,7 @@
           <v-btn icon>
             <v-icon>mdi-calculator</v-icon>
           </v-btn>
-          <v-btn icon class="text-white mr-2">
+          <v-btn @click="goToCart" icon class="text-white mr-2">
             <v-icon>mdi-cart</v-icon>
           </v-btn>
         </v-col>
@@ -96,6 +96,9 @@ export default {
     },
     goToHomePage() {
       this.$router.push({ name: 'HomePage' })
+    },
+    goToCart() {
+      this.$router.push({ name: 'CartPage' })
     }
   }
 }
