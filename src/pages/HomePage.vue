@@ -27,7 +27,7 @@
         :key="product.id"
         cols="12" sm="12" md="4" lg="3"
         >
-        <ProductCard @click="handleClick(product)" :product="product"/>
+        <ProductCard @click="goToProductPage(product)" :product="product"/>
         </v-col>
     </v-row>
 </v-container>
@@ -101,7 +101,7 @@ computed: {
     },
 },
 methods: {
-  handleClick(product) {
+  goToProductPage(product) {
     this.$router.push({ name: 'ProductPage', params: { id: product.id } })
   }
 }
