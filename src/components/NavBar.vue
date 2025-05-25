@@ -5,8 +5,8 @@
         <!-- Logo -->
         <v-col cols="3" class="d-flex align-center">
           <v-btn @click="goToHomePage">
-            <v-icon icon="$vuetify"></v-icon>
-            <v-app-bar-title class="ml-2 login-title-col">Lazaro's Pit</v-app-bar-title>
+            <v-img src="/favicon.ico" max-width="40" max-height="40" />
+            <v-app-bar-title class=" login-title-col " >Lazaro's Pito's Pit</v-app-bar-title>
           </v-btn>
         </v-col>
 
@@ -163,6 +163,12 @@ export default {
 @media (max-width: 500px) {
   .login-title-col {
     display: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 40px); /* ajusta conforme o tamanho do ícone */
+    display: flex;
+    align-items: center;
   }
 }
 
