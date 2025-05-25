@@ -3,9 +3,10 @@
       <v-row>
         <!-- Coluna esquerda: 2/3 da largura -->
         <v-col cols="12" md="8">
-            <v-btn variant='text' color="green" class="mb-4" @click="$router.back()">
+          <v-btn variant='text' color="green" class="mb-4" @click="$router.back()">
             <v-icon left>mdi-arrow-left</v-icon> Back to Products
           </v-btn>
+          
           <h1 class="text-white">Cart Page</h1>
           <br>
   
@@ -32,7 +33,7 @@
               <v-col cols="4" class="d-flex align-center justify-end">
                 <!-- Controle de quantidade -->
                 <v-btn  
-                    variant='text'
+                  variant='text'
                   color="white"
                   @click="decrementQuantity(index)"
                   :disabled="item.quantity <= 1"
@@ -60,7 +61,6 @@
             </v-row>
           </v-card>
         </v-col>
-  
         <!-- Coluna direita: 1/3 da largura -->
         <v-col cols="12" md="4">
           <v-card color="#1e293b" dark elevation="2" class="pa-10">
