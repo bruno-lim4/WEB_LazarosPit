@@ -33,7 +33,7 @@
               <strong>Login</strong>
             </div>
           </v-btn>
-          <v-btn icon>
+          <v-btn icon @click="goToCalculatorPage">
             <v-icon>mdi-calculator</v-icon>
           </v-btn>
           <v-btn @click="goToCart" icon class="text-white mr-2">
@@ -100,6 +100,9 @@ export default {
     },
     goToCart() {
       this.$router.push({ name: 'CartPage' })
+    },
+    goToCalculatorPage() {
+      this.$router.push({ name: 'CalculatorPage' })
     }
   }
 }

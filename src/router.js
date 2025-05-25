@@ -7,6 +7,7 @@ import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import AdminDashboard from '@/pages/AdminDashboard.vue'
 import CartPage from '@/pages/CartPage.vue'
+import CalculatorPage from '@/pages/CalculatorPage.vue'
 
 const routes = [
   { path: '/', name: 'HomePage', component: HomePage },
@@ -34,6 +35,11 @@ const routes = [
     path: '/cart',
     name: 'CartPage',
     component: CartPage,
+  },
+  {
+    path: '/calculator',
+    name: 'CalculatorPage',
+    component: CalculatorPage,
   }
 ]
 const router = createRouter({
