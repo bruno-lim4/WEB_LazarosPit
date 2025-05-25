@@ -179,20 +179,40 @@ export default {
         calculate() {
             this.calculado = true
 
-            // Aqui você pode adicionar a lógica do cálculo baseado nos dados
-            console.log('Calculando com:', {
-                gender: this.gender,
-                age: this.age,
-                height: this.height,
-                weight: this.weight,
-                activityLevel: this.activityLevel,
-            });
+            let tmb = 0;
+
+            if (this.gender==='male') {
+                tmb = 66 + (13.7*this.weight) + (5*this.height) - (6.8*this.age);
+            } else if (this.gender==='female') {
+                tmb = 655 + (9.6*this.weight) + (1.8*this.height) - (4.7*this.age);
+            }
+
+            switch (this.activityLevel.value) {
+                case 'sedentary':
+                    tmb *= 1.2;
+                    break;
+                case 'lightly_active':
+                    tmb *= 1.375;
+                    break;
+                case 'moderately_active':
+                    tmb *= 1.55;
+                    break;
+                case 'active':
+                    tmb *= 1.725;
+                    break;
+                case 'very_active':
+                    tmb *= 1.9;
+                    break;
+                default:
+                    tmb*=0;
+                    break;
+            }
 
             // Exemplo: apenas mantém valores fixos por enquanto
-            this.totalCalories = 60;
-            this.protein = 5;
-            this.carbs = 6;
-            this.fats = 2;
+            this.totalCalories = parseInt(tmb);
+            this.protein = parseInt(1.6*this.weight);
+            this.fats = parseInt((0.25*this.totalCalories)/9);
+            this.carbs = parseInt((this.totalCalories-(this.protein*4+this.fats*9))/4);
         },
     },
 };
