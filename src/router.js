@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 // Importar seus componentes de páginas
 import HomePage from '@/pages/HomePage.vue'
 import ProductPage from '@/pages/ProductPage.vue'
+import AdminCustomerPage from '@/pages/AdminCustomerPage.vue'
+import AdminManagerPage from '@/pages/AdminManagerPage.vue'
+import AdminProductPage from '@/pages/AdminProductPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import AdminDashboard from '@/pages/AdminDashboard.vue'
@@ -14,6 +17,21 @@ const routes = [
     path: '/product/:id',
     name: 'ProductPage',
     component: ProductPage,
+  },
+  {
+    path: '/admin/customer',
+    name: 'AdminCustomerPage',
+    component: AdminCustomerPage,
+  },
+  {
+    path: '/admin/product',
+    name: 'AdminProductPage',
+    component: AdminProductPage,
+  },
+  {
+    path: '/admin/manager',
+    name: 'AdminManagerPage',
+    component: AdminManagerPage,
   },
   {
     path: '/login',
