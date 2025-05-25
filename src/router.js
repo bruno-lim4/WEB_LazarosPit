@@ -5,6 +5,7 @@ import HomePage from '@/pages/HomePage.vue'
 import ProductPage from '@/pages/ProductPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
+import AdminDashboard from '@/pages/AdminDashboard.vue'
 
 const routes = [
   { path: '/', name: 'HomePage', component: HomePage },
@@ -22,6 +23,11 @@ const routes = [
     path: '/register',
     name: 'RegisterPage',
     component: RegisterPage,
+  },
+  {
+    path: '/admin',
+    name: 'AdminDashboard',
+    component: AdminDashboard,
   }
   
 ]
