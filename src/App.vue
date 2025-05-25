@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavBar @buscaFoiRealizada="buscaPorNomeDeProdutoNaAPI" />
+    <NavBar @buscaFoiRealizada="buscaPorNomeDeProdutoNaAPI" @logUserOut="logUserOut" :userIsLoggedIn="userIsLoggedIn" :userIsAdmin="userIsAdmin"/>
     <v-main>
       <router-view/>
     </v-main>
@@ -17,7 +17,17 @@ export default {
     buscaPorNomeDeProdutoNaAPI(pesquisa) {
       console.log('Busca realizada:', pesquisa)
     },
+    logUserOut(){
+      this.userIsLoggedIn = false;
+      this.userIsAdmin = false;
+    }
   },
+  data () {
+    return {
+      userIsLoggedIn: true,
+      userIsAdmin: false,
+    }
+  }
 }
 </script>
 

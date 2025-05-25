@@ -26,11 +26,17 @@
 
         <!-- Login e Carrinho (escondido em telas <= 735px) -->
         <v-col cols="3" class="login-cart-col">
-          <v-btn variant="text" class="text-white" @click="goToLoginPage">
+          <v-btn variant="text" class="text-white" @click="goToLoginPage" v-if="!userIsLoggedIn">
             <v-icon class="mr-1">mdi-account</v-icon>
             <div class="d-flex flex-column text-left" style="line-height: 1">
               <small>Register</small>
               <strong>Login</strong>
+            </div>
+          </v-btn>
+          <v-btn icon variant="text" class="text-white mr-5" @click="logUserOut" v-if="userIsLoggedIn">
+            <v-icon class="mr-1">mdi-exit-run</v-icon>
+            <div class="d-flex flex-column text-left" style="line-height: 1">
+              <small>Log Out</small>
             </div>
           </v-btn>
           <v-btn icon @click="goToCalculatorPage">
@@ -55,23 +61,29 @@
     right
   >
     <v-list>
-      <v-list-item link>
+      <v-list-item v-if="!userIsLoggedIn" @click="goToLoginPage" link>
         <v-list-item-icon>
           <v-icon>mdi-account</v-icon>
         </v-list-item-icon>
         <v-list-item-title>Login / Register</v-list-item-title>
       </v-list-item>
-      <v-list-item link>
+      <v-list-item v-if="userIsLoggedIn" @click="logUserOut" link>
+        <v-list-item-icon>
+          <v-icon>mdi-exit-run</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>Log Out</v-list-item-title>
+      </v-list-item>
+      <v-list-item @click="goToCart" link>
         <v-list-item-icon>
           <v-icon>mdi-cart</v-icon>
         </v-list-item-icon>
         <v-list-item-title>Carrinho</v-list-item-title>
       </v-list-item>
-      <v-list-item link>
+      <v-list-item @click="goToCalculatorPage" link>
         <v-list-item-icon>
           <v-icon>mdi-calculator</v-icon>
         </v-list-item-icon>
-        <v-list-item-title>Calculadora MACROS</v-list-item-title>
+        <v-list-item-title>Macro Calculator</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -84,6 +96,16 @@ export default {
     return {
       pesquisa: '',
       drawer: false,
+    }
+  },
+  props:{
+    userIsLoggedIn:{
+      type: Boolean,
+      default: false,
+    },
+    userIsAdmin:{
+      type: Boolean,
+      default: false,
     }
   },
   watch: {
@@ -103,6 +125,9 @@ export default {
     },
     goToCalculatorPage() {
       this.$router.push({ name: 'CalculatorPage' })
+    },
+    logUserOut() {
+      this.$emit("logUserOut");
     }
   }
 }
