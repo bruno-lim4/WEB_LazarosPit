@@ -1,5 +1,5 @@
 <template>
-  <NavBar/>
+  <NavBar @buscaFoiRealizada="buscaPorNomeDeProdutoNaAPI"/>
 </template>
 
 <script>
@@ -13,7 +13,12 @@ export default {
   },
 
   data: () => ({
-    //
+    
   }),
+  methods: {
+    buscaPorNomeDeProdutoNaAPI(pesquisa) {
+      console.log(pesquisa);
+    }
+  }
 }
 </script>
