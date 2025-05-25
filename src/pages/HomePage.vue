@@ -1,16 +1,11 @@
 <template>
-    <NavBar @buscaFoiRealizada="buscaPorNomeDeProdutoNaAPI"/>
+    <p>Oi</p>
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue';
 
 export default {
-    name: 'HomePage ',
-
-    components: {
-        NavBar,
-    },
+    name: 'HomePage',
 
     data: () => ({
         

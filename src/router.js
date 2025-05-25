@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // Importar seus componentes de páginas
-import Home from './pages/HomePage.vue'
+import HomePage from '@/pages/HomePage.vue'
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
+  { path: '/', name: 'HomePage', component: HomePage },
 ]
 
 const router = createRouter({
