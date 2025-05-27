@@ -10,7 +10,7 @@
     ></v-img>
 
     <v-card-title>
-      {{ product.title }}
+      {{ product.name }}
     </v-card-title>
 
     <v-card-subtitle class="text-success" style="font-size: 1.25rem; font-weight: 600;">

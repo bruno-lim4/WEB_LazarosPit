@@ -21,12 +21,12 @@
         <v-sheet class="bg-background"> <!-- Container para título, avaliações, preço -->
           <v-row>
             <v-col>
-              <h1>Nome do Produto</h1>
+              <h1>{{ product.name }}</h1>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-                <span style="color:#4CAF50; font-size:1.6rem">$ 299.99</span>
+                <span style="color:#4CAF50; font-size:1.6rem">$ {{ product.price }}</span>
             </v-col>
           </v-row>
         </v-sheet>
@@ -36,7 +36,7 @@
         <!-- Descrição -->
         <v-row>
           <v-col>
-            <v-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, temporibus. Porro est molestiae accusantium corrupti totam impedit, nihil sed voluptas iste omnis, tempora ab optio pariatur deleniti, non placeat dolorum.</v-text>
+            <v-text>{{ product.description }}</v-text>
           </v-col>
         </v-row>
         <div class="flex-grow-1"></div>
@@ -68,7 +68,7 @@
             </v-col>
           </v-row>
           <v-row cols="auto">
-            <v-col cols="12">Total: R$ {{ (quantity * price).toFixed(2) }}</v-col>
+            <v-col cols="12">Total: R$ {{ (quantity * this.product.price).toFixed(2) }}</v-col>
             
           </v-row>
         </v-container>
@@ -89,6 +89,7 @@
 </template>
   
 <script>
+  import { getProductById } from '@/services/productService';
     export default {
       name: 'ProductPage',
       computed: {
@@ -99,10 +100,12 @@
       data() {
         return {
           quantity: 1,
+          product: {},
         }
       },
-      mounted() {
-          // Aqui pode fazer fetch da API ou buscar no store/local baseado no productId
+      async mounted() {
+            const res = await getProductById(this.$route.params.id);
+            this.product = res.data;
       },
       methods: {
         goToHomePage() {

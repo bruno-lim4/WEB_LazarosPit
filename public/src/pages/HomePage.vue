@@ -35,77 +35,40 @@
 </template>
   
 <script>
-import ProductCard from '../components/ProductCard.vue'
-export default {
-name: 'HomePage',
-components: {
-    ProductCard
-},
-data() {
-    return {
-    selectedCategory: null,
-    categories: ['All Categories', 'Protein', 'Vitamins', 'Supplements'],
-    products: [
-        {
-        id: 1,
-        title: 'Whey Protein Isolate',
-        price: 299.99,
-        category: 'Protein',
-        image: 'https://images.unsplash.com/photo-1590080877777-cb038a55259a?auto=format&fit=crop&w=600&q=80',
+    import ProductCard from '../components/ProductCard.vue'
+    import { getProducts } from '@/services/productService';
+
+    export default {
+        name: 'HomePage',
+        components: {
+            ProductCard
         },
-        {
-        id: 2,
-        title: 'Vitamin D3 + K2',
-        price: 299.99,
-        category: 'Vitamins',
-        image: 'https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80',
+        data() {
+            return {
+            selectedCategory: null,
+            categories: ['All Categories', 'Protein', 'Vitamins', 'Supplements'],
+            products: [],
+            }
         },
-        {
-        id: 3,
-        title: 'Vitamin D3 + K2',
-        price: 299.99,
-        category: 'Vitamins',
-        image: 'https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80',
+        computed: {
+            filteredProducts() {
+            if (!this.selectedCategory || this.selectedCategory === 'All Categories') {
+                return this.products
+            }
+            return this.products.filter(
+                p => p.category === this.selectedCategory
+            )
+            },
         },
-        {
-        id: 4,
-        title: 'Vitamin D3 + K2',
-        price: 299.99,
-        category: 'Vitamins',
-        image: 'https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80',
+        methods: {
+            goToProductPage(product) {
+                this.$router.push({ name: 'ProductPage', params: { id: product._id } })
+            }
         },
-        {
-        id: 5,
-        title: 'Vitamin D3 + K2',
-        price: 299.99,
-        category: 'Vitamins',
-        image: 'https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80',
+        async mounted() {
+            const res = await getProducts();
+            this.products = res.data;
         },
-        {
-        id: 6,
-        title: 'Vitamin D3 + K2',
-        price: 299.99,
-        category: 'Vitamins',
-        image: 'https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=600&q=80',
-        },
-    ],
     }
-},
-computed: {
-    filteredProducts() {
-    if (!this.selectedCategory || this.selectedCategory === 'All Categories') {
-        return this.products
-    }
-    return this.products.filter(
-        p => p.category === this.selectedCategory
-    )
-    },
-},
-methods: {
-  goToProductPage(product) {
-    this.$router.push({ name: 'ProductPage', params: { id: product.id } })
-  }
-}
-}
 </script>
   
