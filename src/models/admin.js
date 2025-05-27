@@ -17,6 +17,10 @@ const schema = new Schema({
         type: String,
         required: true,
         trim: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
