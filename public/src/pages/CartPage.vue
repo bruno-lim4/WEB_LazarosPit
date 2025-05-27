@@ -18,46 +18,43 @@
             dark
             elevation="2"
           >
-            <v-row class="pa-4" align="center" no-gutters>
-              <v-col cols="3" class="d-flex justify-center">
-                <v-img :src="item.image" max-width="80" max-height="80" />
-              </v-col>
-  
-              <v-col cols="5">
-                <div class="text-h6">{{ item.name }}</div>
-                <div class="text-subtitle2" style="color: #22c55e;">
-                  R$ {{ item.price.toFixed(2) }}
-                </div>
-              </v-col>
-  
-              <v-col cols="4" class="d-flex align-center justify-end">
-                <!-- Controle de quantidade -->
-                <v-btn  
-                  variant='text'
-                  color="white"
-                  @click="decrementQuantity(index)"
-                  :disabled="item.quantity <= 1"
-                >
+          <v-row class="pa-4" no-gutters>
+            <!-- Imagem do produto -->
+            <v-col cols="12" sm="2" class="d-flex justify-center mb-2 mb-sm-0">
+              <v-img :src="item.image" max-width="80" max-height="80" />
+            </v-col>
+
+            <!-- Nome e preço -->
+            <v-col cols="12" sm="4" class="text-center text-sm-left">
+              <div class="text-h6">{{ item.name }}</div>
+              <div class="text-subtitle2" style="color: #22c55e;">
+                R$ {{ item.price.toFixed(2) }}
+              </div>
+            </v-col>
+
+            <!-- Quantidade, subtotal e lixeira -->
+            <v-col cols="12" sm="6" class="d-flex align-center justify-center justify-sm-end flex-wrap">
+              <!-- Controle de quantidade -->
+              <div class="d-flex align-center mb-2 mb-sm-0">
+                <v-btn variant='text' color="white" @click="decrementQuantity(index)" :disabled="item.quantity <= 1">
                   <v-icon>mdi-minus</v-icon>
                 </v-btn>
                 <div class="mx-3">{{ item.quantity }}</div>
                 <v-btn variant='text' color="white" @click="incrementQuantity(index)">
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
-  
-                <!-- Subtotal -->
-                <div
-                  class="ml-6 font-weight-bold"
-                  style="color: #22c55e; min-width: 90px; text-align: right;"
-                >
-                  R$ {{ (item.price * item.quantity).toFixed(2) }}
-                </div>
-  
-                <!-- Lixeira -->
-                <v-btn variant='text' color="red" @click="removeItem(index)">
-                  <v-icon>mdi-trash-can-outline</v-icon>
-                </v-btn>
-              </v-col>
+              </div>
+
+              <!-- Subtotal -->
+              <div class="font-weight-bold ml-sm-6 text-center text-sm-right" style="color: #22c55e; min-width: 90px;">
+                R$ {{ (item.price * item.quantity).toFixed(2) }}
+              </div>
+
+              <!-- Lixeira -->
+              <v-btn variant='text' color="red" class="ml-sm-4" @click="removeItem(index)">
+                <v-icon>mdi-trash-can-outline</v-icon>
+              </v-btn>
+            </v-col>
             </v-row>
           </v-card>
         </v-col>
