@@ -17,6 +17,19 @@
         $ {{ product.price }}
     </v-card-subtitle>
 
+    <v-card-text class="d-flex flex-wrap" style="gap: 0.5rem;">
+      <v-chip
+        v-for="tag in product.tags"
+        :key="tag._id || tag.name"
+        color="blue darken-2"
+        text-color="white"
+        label
+        small
+      >
+        {{ tag.name }}
+      </v-chip>
+    </v-card-text>
+
     <v-card-actions>
       <v-btn
         color="green"
