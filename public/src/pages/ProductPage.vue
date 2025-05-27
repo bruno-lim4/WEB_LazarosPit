@@ -60,7 +60,7 @@
               <div class="quantity-display mx-3">{{ quantity }}</div>
               <v-btn
                 flat
-                @click="quantity++"
+                @click="quantity = Math.min(quantity + 1, this.product.quantity)"
                 aria-label="Increase quantity"
               >
                 <v-icon>mdi-plus</v-icon>
@@ -80,8 +80,7 @@
         </v-btn>
 
         <v-row class="mt-2" justify="space-between">
-          <v-col cols="auto">60 servings per container</v-col>
-          <v-col cols="auto" class="green--text">In Stock</v-col>
+          <v-col cols="auto">Quantity in stock: {{this.product.quantity}}</v-col>
         </v-row>
       </v-col>
     </v-row>

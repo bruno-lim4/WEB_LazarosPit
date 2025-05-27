@@ -37,6 +37,7 @@
 <script>
     import ProductCard from '../components/ProductCard.vue'
     import { getProducts } from '@/services/productService';
+    import { getTags } from '@/services/tagService';
 
     export default {
         name: 'HomePage',
@@ -46,18 +47,18 @@
         data() {
             return {
             selectedCategory: null,
-            categories: ['All Categories', 'Protein', 'Vitamins', 'Supplements'],
+            categories: ['All Categories'],
             products: [],
             }
         },
         computed: {
             filteredProducts() {
-            if (!this.selectedCategory || this.selectedCategory === 'All Categories') {
-                return this.products
-            }
-            return this.products.filter(
-                p => p.category === this.selectedCategory
-            )
+                if (!this.selectedCategory || this.selectedCategory === 'All Categories') {
+                    return this.products
+                }
+                return this.products.filter(
+                    p => (p.tags.some(tag => tag.name === this.selectedCategory))
+                )
             },
         },
         methods: {
@@ -67,7 +68,12 @@
         },
         async mounted() {
             const res = await getProducts();
+            const categories = await getTags();
             this.products = res.data;
+                        
+            categories.data.forEach(element => {
+                this.categories.push(element.name)
+            });
         },
     }
 </script>

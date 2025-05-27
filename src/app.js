@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import admin from './routes/admin.js';
 import Product from './models/product.js';
 import cart from './routes/cart.js';
+import tag from './routes/tag.js';
 import cors from 'cors';
 
 const app = express();
@@ -20,5 +21,6 @@ app.use('/product', product);
 app.use('/cart', cart);
 app.use('/admin', admin);
 app.use('/client', client);
+app.use('/tag', tag);
 
 export default app;
