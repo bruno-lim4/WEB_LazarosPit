@@ -11,7 +11,18 @@
         </v-row>
   
         <v-form ref="form" v-model="valid" lazy-validation>
-  
+          <!-- Name -->
+          <v-text-field
+            class="mb-3"
+            density="compact"
+            label="Name"
+            prepend-inner-icon="mdi-account"
+            variant="outlined"
+            v-model="client.name"
+            :rules="nameRules"
+            required
+          ></v-text-field>
+
           <!-- Email -->
           <v-text-field
             class="mb-3"
@@ -19,7 +30,7 @@
             label="Email"
             prepend-inner-icon="mdi-email-outline"
             variant="outlined"
-            v-model="email"
+            v-model="client.email"
             :rules="emailRules"
             required
           ></v-text-field>
@@ -33,7 +44,7 @@
             label="Password"
             prepend-inner-icon="mdi-lock-outline"
             variant="outlined"
-            v-model="password"
+            v-model="client.password"
             :rules="passwordRules"
             required
             @click:append-inner="visiblePassword = !visiblePassword"
@@ -61,7 +72,7 @@
             label="Phone Number"
             prepend-inner-icon="mdi-phone"
             variant="outlined"
-            v-model="phone"
+            v-model="client.phoneNumber"
             :rules="phoneRules"
             required
           ></v-text-field>
@@ -74,7 +85,7 @@
             type="number"
             prepend-inner-icon="mdi-scale-bathroom"
             variant="outlined"
-            v-model="weight"
+            v-model="client.weight"
             :rules="weightRules"
             required
           ></v-text-field>
@@ -87,7 +98,7 @@
             type="date"
             prepend-inner-icon="mdi-calendar"
             variant="outlined"
-            v-model="birthDate"
+            v-model="client.birthDate"
             :rules="birthDateRules"
             required
           ></v-text-field>
@@ -101,8 +112,7 @@
               <v-text-field
                 label="ZIP Code"
                 density="compact"
-                placeholder="00000-000"
-                v-model="zipCode"
+                v-model="client.zipCode"
                 :rules="zipCodeRules"
                 required
               ></v-text-field>
@@ -112,7 +122,7 @@
               <v-text-field
                 label="Street"
                 density="compact"
-                v-model="street"
+                v-model="client.street"
                 :rules="streetRules"
                 required
               ></v-text-field>
@@ -122,7 +132,7 @@
               <v-text-field
                 label="Number"
                 density="compact"
-                v-model="number"
+                v-model="client.addressNumber"
                 :rules="numberRules"
                 required
               ></v-text-field>
@@ -132,7 +142,7 @@
               <v-text-field
                 label="Neighborhood"
                 density="compact"
-                v-model="neighborhood"
+                v-model="client.neighborhood"
                 :rules="neighborhoodRules"
                 required
               ></v-text-field>
@@ -142,7 +152,7 @@
               <v-text-field
                 label="City"
                 density="compact"
-                v-model="city"
+                v-model="client.city"
                 :rules="cityRules"
                 required
               ></v-text-field>
@@ -152,7 +162,7 @@
               <v-text-field
                 label="State"
                 density="compact"
-                v-model="state"
+                v-model="client.state"
                 :rules="stateRules"
                 required
               ></v-text-field>
@@ -164,9 +174,7 @@
               <v-text-field
                 label="Complement"
                 density="compact"
-                v-model="complement"
-                :rules="stateRules"
-                required
+                v-model="client.complement"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -201,25 +209,19 @@
 </template>
   
 <script>
+import { createClient } from '@/services/clientService';
+
 export default {
     data() {
         return {
         visiblePassword: false,
         visibleConfirm: false,
         valid: false,
-        email: '',
-        password: '',
+        client: {},
         confirmPassword: '',
-        phone: '',
-        weight: '',
-        birthDate: '',
-        zipCode: '',
-        street: '',
-        number: '',
-        neighborhood: '',
-        city: '',
-        state: '',
-        complement: '',
+        nameRules: [
+          v => !!v || 'Name is required',
+        ],
         emailRules: [
             v => !!v || 'Email is required',
             v => /.+@.+\..+/.test(v) || 'Invalid email',
@@ -230,22 +232,20 @@ export default {
         ],
         confirmPasswordRules: [
             v => !!v || 'Please confirm your password',
-            v => v === this.password || 'Passwords do not match',
+            v => v === this.client.password || 'Passwords do not match',
         ],
         phoneRules: [
             v => !!v || 'Phone number is required',
-            v => /^\d{10,}$/.test(v) || 'Enter a valid number',
         ],
         weightRules: [
             v => !!v || 'Weight is required',
-            v => v > 0 || 'Weight must be positive',
+            v => (v >= 20 && v <= 500) || 'Weight must be between 20 and 500 kg.',
         ],
         birthDateRules: [
             v => !!v || 'Birth date is required',
         ],
         zipCodeRules: [
             v => !!v || 'ZIP code is required',
-            v => /^\d{5}-\d{3}$/.test(v) || 'Format must be 00000-000',
         ],
         streetRules: [v => !!v || 'Street is required'],
         numberRules: [v => !!v || 'Number is required'],
@@ -260,10 +260,14 @@ export default {
         },
     },
     methods: {
-        register() {
+        async register() {
         if (this.$refs.form.validate()) {
-            alert(`Registered successfully!\nEmail: ${this.email}\nPhone: ${this.phone}\nWeight: ${this.weight} kg\nBirth Date: ${this.birthDate}`);
-            // Integrate with your backend here
+            try {
+              await createClient(this.client)
+              this.$router.push({name: 'LoginPage'})
+            } catch (error) {
+              alert(error.response.data.error)
+            }
         }
         },
         goToLoginPage() {

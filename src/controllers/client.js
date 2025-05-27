@@ -28,6 +28,10 @@ controller.post = async (req, res) => {
         await client.save();
         res.status(201).send({ message: "Cliente cadastrado com sucesso" });
     } catch (e) {
+        if (e.code === 11000 && e.keyPattern.email) {
+            // Erro de duplicidade de e-mail
+            return res.status(409).json({ error: 'This email is already registered.' });
+        }
         res.status(400).send({ error: e.message });
     }
 };
