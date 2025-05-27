@@ -13,7 +13,7 @@
       <!-- Coluna da imagem -->
 
       <v-col cols="12" md="6">
-        <v-img src="image" />
+        <v-img :src="product.image" />
       </v-col>
 
       <!-- Coluna dos detalhes -->
