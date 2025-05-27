@@ -28,8 +28,8 @@
             type="number"
             label="Age (years)"
             prepend-inner-icon="mdi-cake-variant"
-            min="0"
-            max="150"
+            @blur="validateField('age')"
+            :error-messages="errors.age"
             dense
             outlined
           ></v-text-field>
@@ -40,8 +40,8 @@
             type="number"
             label="Height (cm)"
             prepend-inner-icon="mdi-ruler"
-            min="0"
-            max="300"
+            @blur="validateField('height')"
+            :error-messages="errors.height"
             dense
             outlined
           ></v-text-field>
@@ -52,8 +52,8 @@
             type="number"
             label="Weight (kg)"
             prepend-inner-icon="mdi-scale-bathroom"
-            min="0"
-            max="500"
+            @blur="validateField('weight')"
+            :error-messages="errors.weight"
             dense
             outlined
           ></v-text-field>
@@ -173,10 +173,24 @@ export default {
         protein: 0,
         carbs: 0,
         fats: 0,
+        errors: {
+          age: [],
+          height: [],
+          weight: []
+        }
         };
     },
     methods: {
         calculate() {
+            this.validateField('age');
+            this.validateField('height');
+            this.validateField('weight');
+
+            if (this.errors.age.length || this.errors.height.length || this.errors.weight.length) {
+              this.calculado = false;
+              return;
+            }
+
             this.calculado = true
 
             let tmb = 0;
@@ -214,6 +228,24 @@ export default {
             this.fats = parseInt((0.25*this.totalCalories)/9);
             this.carbs = parseInt((this.totalCalories-(this.protein*4+this.fats*9))/4);
         },
+        validateField(field) {
+          const value = this[field];
+          const messages = [];
+
+          if (field === 'age') {
+            if (value < 10 || value > 120) messages.push('Age must be between 10 and 120.');
+          }
+
+          if (field === 'height') {
+            if (value < 100 || value > 250) messages.push('Height must be between 100 and 250 cm.');
+          }
+
+          if (field === 'weight') {
+            if (value < 20 || value > 500) messages.push('Weight must be between 20 and 500 kg.');
+          }
+
+          this.errors[field] = messages;
+        }
     },
 };
 </script>
