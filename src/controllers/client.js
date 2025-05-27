@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 import Client from '../models/client.js'; 
+import bcrypt from "bcrypt";
 
 const controller = {};
 
 controller.get = async (req, res) => {
     try {
-        const data = await Client.find({}, 'name email phoneNumber city state');
+        const data = await Client.find({}, 'name password email phoneNumber city state');
         res.status(200).send(data);
     } catch (e) {
         res.status(400).send({ error: e.message });
@@ -23,6 +24,7 @@ controller.getById = async (req, res) => {
 };
 
 controller.post = async (req, res) => {
+    req.body.password = await bcrypt.hash(req.body.password, 10);
     const client = new Client(req.body);
     try {
         await client.save();
