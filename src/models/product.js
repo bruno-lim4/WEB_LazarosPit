@@ -2,11 +2,32 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  name: { type: String, required: true, trim: true },
-  description: { type: String, required: true, trim: true },
-  price: { type: Number, required: true },
-  quantity: { type: Number, required: true },
-  active: { type: Boolean, default: true, required: true },
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true
+  },
+  description: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: [0, "Price must be a positive number"]
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    min: [0, "Quantity in stock must be positive."]
+  },
+  active: {
+    type: Boolean,
+    default: true,
+    required: true
+  },
   tags: [
     {
       type: Schema.Types.ObjectId,
@@ -14,7 +35,11 @@ const schema = new Schema({
       required: false
     }
   ],
-  image: { type: String, required: true, trim: true }
+  image: {
+    type: String,
+    required: true,
+    trim: true
+  }
 });
 
 export default mongoose.model('Product', schema);
