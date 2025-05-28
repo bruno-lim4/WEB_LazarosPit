@@ -11,14 +11,21 @@
               <v-icon color="medium-emphasis" icon="mdi-book-multiple" size="x-small" start></v-icon>
                 Products
             </v-toolbar-title>
-  
+            <v-btn
+              prepend-icon="mdi-plus"
+              text="Create Tag"
+              class="mr-2"
+              rounded="lg"
+              border
+              @click="tagDialog = true"
+            />
             <v-btn
               class="me-2"
               prepend-icon="mdi-plus"
               rounded="lg"
               text="Add a Product"
               border
-              @click="openDialog()"
+              @click="openProductDialog()"
             ></v-btn>
           </v-toolbar>
         </template>
@@ -33,13 +40,24 @@
   
         <template v-slot:[`item.actions`]="{ item }">
           <div class="d-flex ga-2 justify-end">
-            <v-icon color="medium-emphasis" icon="mdi-pencil" size="small" @click="openDialog(item._id)"></v-icon>
+            <v-icon color="medium-emphasis" icon="mdi-pencil" size="small" @click="openProductDialog(item._id)"></v-icon>
             <v-icon color="medium-emphasis" icon="mdi-delete" size="small" @click="deleteProduct(item._id)"></v-icon>
           </div>
         </template>
       </v-data-table>
     </v-sheet>
-  
+    <v-dialog v-model="tagDialog" max-width="400">
+      <v-card title="Create a New Tag">
+        <v-card-text>
+          <v-text-field v-model="newTagName" label="Tag Name" />
+        </v-card-text>
+        <v-card-actions>
+          <v-btn text="Cancel" @click="tagDialog = false" />
+          <v-spacer />
+          <v-btn text="Save" @click="createNewTag" />
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-dialog v-model="dialog" max-width="500">
       <v-card
         :subtitle="`${isEditing ? 'Update' : 'Create'}`"
@@ -63,6 +81,8 @@
                 item-value="_id"
                 label="Tags"
                 multiple
+                chips
+                clearable
               ></v-select>
             </v-col>
   
@@ -98,7 +118,7 @@
   </template>
   <script>
   import { getProducts, getProductById, deleteProduct, updateProduct, createProduct } from '@/services/productService';
-  import { getTags } from '@/services/tagService';
+  import { getTags, createTag } from '@/services/tagService';
 
   export default {
     name: 'AdminProductPage',
@@ -110,6 +130,8 @@
         productToBeAdded: { name: '', description: '', price: 0, quantity: 0, quantitySold: 0, tags: [], image: '' },
         dialog: false,
         isEditing: false,
+        tagDialog: false,
+        newTagName: '',
         headers: [
           { title: 'Name', value: 'name', align: 'start' },
           { title: 'Description', value: 'description' },
@@ -135,7 +157,7 @@
       async fetchTags() {
         this.tags = await getTags();
       },
-      async openDialog(id = null) {
+      async openProductDialog(id = null) {
         this.isEditing = !!id;
 
         if (this.isEditing) {
@@ -161,14 +183,23 @@
             image: ''
           };
         }
-
         this.dialog = true;
+      },
+      async createNewTag() {
+        try {
+          await createTag({ name: this.newTagName });
+          this.fetchTags();
+          this.newTagName = '';
+          this.tagDialog = false;
+        } catch (err) {
+          console.error("Erro ao criar tag:", err);
+          alert("Erro ao criar tag.");
+        }
       },
       async deleteProduct(id) {
         await deleteProduct(id);
         await this.fetchProducts();
       },
-  
       async saveProduct() {
         if (this.isEditing) {
           await updateProduct(this.productToBeAdded._id, this.productToBeAdded);
