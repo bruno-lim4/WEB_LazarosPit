@@ -1,8 +1,16 @@
 import api from './api';
 
-export const getAdmins = () => api.get('/admin');
+export const getAdmins = async () => 
+{ 
+    const res = await api.get('/admin');
+    return res.data;
+}
 
-export const getAdminById = (id) => api.get(`/admin/${id}`);
+export const getAdminById = async (id) => 
+{ 
+    const res = await api.get(`/admin/${id}`);
+    return res.data;
+}
 
 export const createAdmin = (data) => api.post('/admin', data);
 

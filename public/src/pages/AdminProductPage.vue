@@ -97,7 +97,6 @@
     </v-dialog>
   </template>
   <script>
-  import { useDate } from 'vuetify'
   import { getProducts, getProductById, deleteProduct, updateProduct, createProduct } from '@/services/productService';
   import { getTags } from '@/services/tagService';
 
@@ -125,18 +124,23 @@
     },
   
     async mounted() {
-      this.products = await getProducts();
-      this.tags = await getTags();
+      await this.fetchProducts();
+      await this.fetchTags();
     },
   
     methods: {
+      async fetchProducts() {
+        this.products = await getProducts();
+      },
+      async fetchTags() {
+        this.tags = await getTags();
+      },
       async openDialog(id = null) {
         this.isEditing = !!id;
 
         if (this.isEditing) {
           try {
             const response = await getProductById(id);
-            console.log(id);
             this.productToBeAdded = {
               ...response,
               tags: (response.tags || []).map(tag => tag._id || tag)
@@ -162,7 +166,7 @@
       },
       async deleteProduct(id) {
         await deleteProduct(id);
-        this.products = await getProducts();
+        await this.fetchProducts();
       },
   
       async saveProduct() {
@@ -171,8 +175,8 @@
         } else {
           await createProduct(this.productToBeAdded);
         }
-        this.dialog = false
-        this.products = await getProducts();
+        this.dialog = false;
+        await this.fetchProducts();
       },
     }
   }
