@@ -26,6 +26,7 @@ const schema = new Schema({
   quantitySold: {
     type: Number,
     required: true,
+    min: [0, "Quantity sold must be positive."]
   },
   active: {
     type: Boolean,

@@ -18,7 +18,7 @@ const cartSchema = new Schema({
         quantity: {
           type: Number,
           required: true,
-          min: [1, "A quantidade mínima é 1"]
+          min: [1, "Minimum quantity is 1"]
         }
       }
     ],
@@ -27,14 +27,14 @@ const cartSchema = new Schema({
         validator: function (products) {
           return products.length > 0;
         },
-        message: "O carrinho deve conter ao menos um produto."
+        message: "The cart must contain at least one product."
       },
       {
         validator: function (products) {
           const uniqueIds = new Set(products.map(p => p.product.toString()));
           return uniqueIds.size === products.length;
         },
-        message: "Não é permitido ter o mesmo produto mais de uma vez no carrinho."
+        message: "Duplicate products are not allowed in the cart."
       }
     ]
   },
@@ -49,10 +49,10 @@ const cartSchema = new Schema({
   }
 });
 
-// Impede alterações se o carrinho já foi vendido
+// Prevent changes if the cart has already been marked as sold
 cartSchema.pre('save', function (next) {
   if (!this.isNew && this.sold && this.isModified()) {
-    return next(new Error("Carrinho já finalizado não pode ser modificado."));
+    return next(new Error("Finalized cart cannot be modified."));
   }
   next();
 });

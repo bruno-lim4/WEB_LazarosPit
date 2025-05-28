@@ -11,7 +11,13 @@ const schema = new Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true
+        unique: true,
+        validate: {
+          validator: function (v) {
+            return /^\S+@\S+\.\S+$/.test(v);
+          },
+          message: "Invalid email"
+        }
     },
     password: {
         type: String,
@@ -21,7 +27,8 @@ const schema = new Schema({
     phoneNumber: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        match: [/^\d+$/, 'Phone number must contain digits only']
     },
     createdAt: {
         type: Date,
