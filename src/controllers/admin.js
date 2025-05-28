@@ -6,7 +6,7 @@ const controller = {};
 
 controller.get = async (req, res) => {
     try {
-        const data = await Admin.find({}, 'name phoneNumber createdAt email');
+        const data = await Admin.find({}, 'name phoneNumber createdAt password email');
         res.status(200).send(data);
     } catch (e) {
         res.status(400).send({ error: e.message });
