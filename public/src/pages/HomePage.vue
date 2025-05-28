@@ -12,8 +12,8 @@
 
     <v-row class="mb-8" align="center" justify="center" direction="column">
         <v-select
-        :items="categories"
-        label="Categories"
+        :items="tags"
+        label="Tags"
         variant="underlined"
         v-model="selectedCategory"
         class="ma-auto"
@@ -47,13 +47,13 @@
         data() {
             return {
             selectedCategory: null,
-            categories: ['All Categories'],
+            tags: ['All tags'],
             products: [],
             }
         },
         computed: {
             filteredProducts() {
-                if (!this.selectedCategory || this.selectedCategory === 'All Categories') {
+                if (!this.selectedCategory || this.selectedCategory === 'All tags') {
                     return this.products
                 }
                 return this.products.filter(
@@ -68,11 +68,11 @@
         },
         async mounted() {
             const res = await getProducts();
-            const categories = await getTags();
-            this.products = res.data;
+            const tags = await getTags();
+            this.products = res;
                         
-            categories.data.forEach(element => {
-                this.categories.push(element.name)
+            tags.forEach(element => {
+                this.tags.push(element.name)
             });
         },
     }

@@ -23,6 +23,10 @@ const schema = new Schema({
     required: true,
     min: [0, "Quantity in stock must be positive."]
   },
+  quantitySold: {
+    type: Number,
+    required: true,
+  },
   active: {
     type: Boolean,
     default: true,

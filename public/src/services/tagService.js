@@ -1,3 +1,6 @@
 import api from './api';
 
-export const getTags = () => api.get('/tag/');
+export const getTags = async () => {
+    const res = await api.get('/tag/');
+    return res.data;
+};
