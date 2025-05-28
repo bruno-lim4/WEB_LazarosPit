@@ -76,7 +76,7 @@
         },
         methods: {
             goToProductPage(product) {
-                this.$router.push({ name: 'ProductPage', params: { id: product._id } })
+                this.$router.push({ name: 'ProductPage', params: { id: product._id } });
             }
         },
         async mounted() {

@@ -100,30 +100,7 @@
     name: 'CartPage',
     data() {
       return {
-        deliveryFee: 100,
-        cartItems: [
-          {
-            id: 1,
-            name: 'Whey Protein Isolate',
-            price: 299.99,
-            quantity: 2,
-            image: 'https://images.unsplash.com/photo-1606813909286-c05e4bd13433?auto=format&fit=crop&w=80&q=80',
-          },
-          {
-            id: 2,
-            name: 'Pre-Workout Extreme',
-            price: 159.99,
-            quantity: 4,
-            image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=80&q=80',
-          },
-          {
-            id: 3,
-            name: 'BCAA Recovery',
-            price: 129.99,
-            quantity: 3,
-            image: 'https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=80&q=80',
-          },
-        ],
+        cartItems: [],
       }
     },
     computed: {
@@ -134,7 +111,7 @@
         )
       },
       totalSum() {
-        return this.productsTotal + this.deliveryFee
+        return this.productsTotal;
       },
     },
     methods: {
