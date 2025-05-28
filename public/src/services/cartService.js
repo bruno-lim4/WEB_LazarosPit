@@ -1,6 +1,9 @@
 import api from './api';
 
-export const getCarts = () => api.get('/cart');
+export const getCarts = async () => {
+    const res = await api.get('/cart');
+    return res.data;
+}
 
 export const getCartById = (id) => api.get(`/cart/${id}`);
 

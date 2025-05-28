@@ -7,18 +7,43 @@
       </v-col>
     </v-row>
 
-    <!-- Cartões principais: 100% em telas pequenas, 6 colunas em telas médias, 4 colunas em grandes -->
     <v-row class="mb-6" align="stretch">
-      <v-col cols="12" sm="6" md="4" class="d-flex" v-for="(card, i) in cards" :key="i">
+      <v-col cols="12" sm="6" md="4" class="d-flex">
         <v-card class="pa-8 d-flex flex-column flex-grow-1" color="#1e293b" elevation="4">
           <v-row align="center px-3" justify="space-between">
-            <v-icon :color="card.iconColor">{{ card.icon }}</v-icon>
-            <v-chip color="grey-darken-2" text-color="white">{{ card.count }}</v-chip>
+            <v-icon color="blue">mdi-account-group</v-icon>
+            <v-chip color="grey-darken-2" text-color="white">{{ cards.customers }}</v-chip>
           </v-row>
-          <h3 class="mt-4 text-h6">{{ card.title }}</h3>
-          <p class="text-caption">{{ card.description }}</p>
+          <h3 class="mt-4 text-h6">Customers</h3>
+          <p class="text-caption">Manage customer accounts and data</p>
           <div class="flex-grow-1"></div>
-          <v-btn color="green" class="mt-3" @click="navigate(card.route)">{{ card.button }}</v-btn>
+          <v-btn color="green" class="mt-3" @click="goToPage('AdminCustomerPage')">Manage Customers</v-btn>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" sm="6" md="4" class="d-flex">
+        <v-card class="pa-8 d-flex flex-column flex-grow-1" color="#1e293b" elevation="4">
+          <v-row align="center px-3" justify="space-between">
+            <v-icon color="green">mdi-cube</v-icon>
+            <v-chip color="grey-darken-2" text-color="white">{{ cards.products }}</v-chip>
+          </v-row>
+          <h3 class="mt-4 text-h6">Products</h3>
+          <p class="text-caption">Manage product inventory and details</p>
+          <div class="flex-grow-1"></div>
+          <v-btn color="green" class="mt-3" @click="goToPage('AdminProductPage')">Manage Products</v-btn>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" sm="6" md="4" class="d-flex">
+        <v-card class="pa-8 d-flex flex-column flex-grow-1" color="#1e293b" elevation="4">
+          <v-row align="center px-3" justify="space-between">
+            <v-icon color="purple">mdi-shield-account</v-icon>
+            <v-chip color="grey-darken-2" text-color="white">{{ cards.admins }}</v-chip>
+          </v-row>
+          <h3 class="mt-4 text-h6">Admins</h3>
+          <p class="text-caption">Manage administrator accounts</p>
+          <div class="flex-grow-1"></div>
+          <v-btn color="green" class="mt-3" @click="goToPage('AdminManagerPage')">Manage Admins</v-btn>
         </v-card>
       </v-col>
     </v-row>
@@ -28,12 +53,30 @@
         <h2 class="text-h5 mb-4">System Overview</h2>
       </v-col>
 
-      <v-col cols="12" sm="6" md="3" v-for="(metric, i) in metrics" :key="i">
+      <v-col cols="12" sm="6" md="4">
         <v-card class="pa-4" color="#1e293b" elevation="4">
-          <v-icon :color="metric.iconColor">{{ metric.icon }}</v-icon>
-          <h3 class="mt-4 text-h6">{{ metric.title }}</h3>
-          <p class="text-subtitle-1 font-weight-bold" :class="metric.textColor">{{ metric.value }}</p>
-          <p class="text-caption">{{ metric.caption }}</p>
+          <v-icon color="green">mdi-currency-usd</v-icon>
+          <h3 class="mt-4 text-h6">Total Revenue</h3>
+          <p class="text-subtitle-1 font-weight-bold text-green">R$ {{ metrics.revenue }}</p>
+          <p class="text-caption">Overall earnings</p>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" sm="6" md="4">
+        <v-card class="pa-4" color="#1e293b" elevation="4">
+          <v-icon color="orange">mdi-cart</v-icon>
+          <h3 class="mt-4 text-h6">Orders Today</h3>
+          <p class="text-subtitle-1 font-weight-bold text-orange">{{ metrics.ordersToday }}</p>
+          <p class="text-caption">New orders received</p>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" sm="6" md="4">
+        <v-card class="pa-4" color="#1e293b" elevation="4">
+          <v-icon color="purple">mdi-account-plus</v-icon>
+          <h3 class="mt-4 text-h6">New Customers</h3>
+          <p class="text-subtitle-1 font-weight-bold">{{ metrics.newCustomers }}</p>
+          <p class="text-caption">This week</p>
         </v-card>
       </v-col>
     </v-row>
@@ -41,79 +84,80 @@
 </template>
 
 <script>
+
+import { getAdmins } from '@/services/adminService';
+import { getClients } from '@/services/clientService';
+import { getProducts } from '@/services/productService';
+import { getCarts } from '@/services/cartService';
+
 export default {
   name: 'AdminDashboard',
   data() {
     return {
-      cards: [
-        {
-          icon: 'mdi-account-group',
-          iconColor: 'blue',
-          count: 1247,
-          title: 'Customers',
-          description: 'Manage customer accounts and data',
-          button: 'Manage Customers',
-          route: 'AdminCustomerPage'
-        },
-        {
-          icon: 'mdi-cube',
-          iconColor: 'green',
-          count: 89,
-          title: 'Products',
-          description: 'Manage product inventory and details',
-          button: 'Manage Products',
-          route: 'AdminProductPage'
-        },
-        {
-          icon: 'mdi-shield-account',
-          iconColor: 'purple',
-          count: 5,
-          title: 'Admins',
-          description: 'Manage administrator accounts',
-          button: 'Manage Admins',
-          route: 'AdminManagerPage'
-        }
-      ],
-      metrics: [
-        {
-          icon: 'mdi-currency-usd',
-          iconColor: 'green',
-          title: 'Total Revenue',
-          value: 'R$ 45.680,50',
-          caption: 'Overall earnings',
-          textColor: 'text-green'
-        },
-        {
-          icon: 'mdi-package-variant',
-          iconColor: 'blue',
-          title: 'Products in Stock',
-          value: '67',
-          caption: '22 out of stock',
-          textColor: ''
-        },
-        {
-          icon: 'mdi-cart',
-          iconColor: 'orange',
-          title: 'Orders Today',
-          value: '23',
-          caption: 'New orders received',
-          textColor: 'text-orange'
-        },
-        {
-          icon: 'mdi-account-plus',
-          iconColor: 'purple',
-          title: 'New Customers',
-          value: '34',
-          caption: 'This week',
-          textColor: ''
-        }
-      ]
+      cards: {
+        customers: 0,
+        products: 0,
+        admins: 0
+      },
+      metrics: {
+        revenue: 0,
+        ordersToday: 0,
+        newCustomers: 0
+      }
     }
   },
   methods: {
-    navigate(routeName) {
+    goToPage(routeName) {
       this.$router.push({ name: routeName });
-    }
-  }
+    },
+    async fetchOverviewAndCardData() {
+      const products = await getProducts();
+      this.cards.products = products.length;
+      const clients = await getClients();
+      this.cards.customers = clients.length;
+      const admins = await getAdmins();
+      this.cards.admins = admins.length;
+      let totalRevenueSum = 0;
+      for(let i = 0; i < products.length; i++) {
+        totalRevenueSum += products[i].price * products[i].quantitySold
+      }
+      this.metrics.revenue = totalRevenueSum;
+      const today = new Date();
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(today.getDate() - 7);
+
+      let countThisWeek = 0;
+
+      for (const client of clients) {
+        const createdDate = new Date(client.createdAt);
+        if (createdDate >= oneWeekAgo && createdDate <= today) {
+          countThisWeek++;
+        }
+      }
+
+      this.metrics.newCustomers = countThisWeek;
+
+      // 🟠 Pedidos feitos HOJE
+      const carts = await getCarts();
+      let ordersToday = 0;
+      const isSameDay = (date1, date2) =>
+        date1.getDate() === date2.getDate() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getFullYear() === date2.getFullYear();
+
+      for (const cart of carts) {
+        if (cart.sold) {
+          const orderDate = new Date(cart.createdAt);
+          if (isSameDay(orderDate, today)) {
+            ordersToday++;
+          }
+        }
+      }
+      this.metrics.ordersToday = ordersToday;
+    },
+  },
+  async mounted() {
+    this.fetchOverviewAndCardData();
+  },
 }
 </script>
