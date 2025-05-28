@@ -5,7 +5,7 @@ const controller = {};
 
 controller.get = async (req, res) => {
     try {
-        const data = await Product.find({ active: true }).populate('tags', 'name').select('name image description price tags');
+        const data = await Product.find({ active: true }).populate('tags', 'name').select('name image description price quantity quantitySold tags');
         res.status(200).send(data)
     } catch (e) {
         res.status(400).send({e})

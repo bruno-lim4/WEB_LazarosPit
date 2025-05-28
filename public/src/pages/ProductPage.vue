@@ -51,16 +51,16 @@
           <v-row align="center">
             <v-col cols="auto" class="d-flex align-center">
               <v-btn
-                @click="quantity = Math.max(quantity - 1, 1)"
+                @click="quantityToBeBought = Math.max(quantityToBeBought - 1, 1)"
                 aria-label="Decrease quantity"
                 flat
               >
                 <v-icon>mdi-minus</v-icon>
               </v-btn>
-              <div class="quantity-display mx-3">{{ quantity }}</div>
+              <div class="quantity-display mx-3">{{ quantityToBeBought }}</div>
               <v-btn
                 flat
-                @click="quantity = Math.min(quantity + 1, this.product.quantity)"
+                @click="quantityToBeBought = Math.min(quantityToBeBought + 1, this.product.quantity)"
                 aria-label="Increase quantity"
               >
                 <v-icon>mdi-plus</v-icon>
@@ -68,7 +68,7 @@
             </v-col>
           </v-row>
           <v-row cols="auto">
-            <v-col cols="12">Total: R$ {{ (quantity * this.product.price).toFixed(2) }}</v-col>
+            <v-col cols="12">Total: R$ {{ (quantityToBeBought * this.product.price).toFixed(2) }}</v-col>
             
           </v-row>
         </v-container>
@@ -93,18 +93,17 @@
       name: 'ProductPage',
       computed: {
           productId() {
-              return this.$route.params.id
+            return this.$route.params.id
           }
       },
       data() {
         return {
-          quantity: 1,
+          quantityToBeBought: 1,
           product: {},
         }
       },
       async mounted() {
-            const res = await getProductById(this.$route.params.id);
-            this.product = res.data;
+        this.product = await getProductById(this.$route.params.id);
       },
       methods: {
         goToHomePage() {

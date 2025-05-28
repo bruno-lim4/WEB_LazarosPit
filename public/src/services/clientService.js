@@ -1,8 +1,14 @@
 import api from './api';
 
-export const getClients = () => api.get('/client');
+export const getClients = async () => {
+    const res = await api.get('/client');
+    return res.data;
+}
 
-export const getClientById = (id) => api.get(`/client/${id}`);
+export const getClientById = async (id) => { 
+    const res = await api.get(`/client/${id}`); 
+    return res.data;
+}
 
 export const userLogin = (data) => api.post('/client/login', data);
 
