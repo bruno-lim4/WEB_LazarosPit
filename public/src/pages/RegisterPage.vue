@@ -220,7 +220,7 @@ export default {
         client: {},
         confirmPassword: '',
         nameRules: [
-          v => !!v || 'Name is required',
+            v => !!v || 'Name is required',
         ],
         emailRules: [
             v => !!v || 'Email is required',
@@ -236,6 +236,9 @@ export default {
         ],
         phoneRules: [
             v => !!v || 'Phone number is required',
+            v => /^\d+$/.test(v) || 'Phone number must contain only digits',
+            v => v.length >= 10 || 'Phone number must be at least 10 digits',
+            v => v.length <= 15 || 'Phone number must be no more than 15 digits'
         ],
         weightRules: [
             v => !!v || 'Weight is required',
@@ -243,9 +246,19 @@ export default {
         ],
         birthDateRules: [
             v => !!v || 'Birth date is required',
+            v => {
+              const date = new Date(v);
+              const now = new Date();
+              return date < now || 'Birth date cannot be in the future';
+            },
+            v => {
+              const year = new Date(v).getFullYear();
+              return year >= 1900 || 'Birth year must be 1900 or later';
+            }
         ],
         zipCodeRules: [
             v => !!v || 'ZIP code is required',
+            v => /^\d{8}$/.test(v) || 'ZIP code must contain exactly 8 digits'
         ],
         streetRules: [v => !!v || 'Street is required'],
         numberRules: [v => !!v || 'Number is required'],

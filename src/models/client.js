@@ -42,22 +42,19 @@ const schema = new Schema({
     validate: {
       validator: function (value) {
         const now = new Date();
-        const minAge = 13;
-  
-        const ageDifMs = now - value;
-        const ageDate = new Date(ageDifMs);
-        const age = Math.abs(ageDate.getUTCFullYear() - 1970);
-  
-        // Condições:
-        return value < now && age >= minAge;
+        return value < now && 1900 <= value.getFullYear();
       },
-      message: 'Birth date is not valid. Users must be at least 13 years old, and the date must not be in the future'
+      message: 'Birth date is not valid. The date must not be in the future, and the year must be greater than or equal to 1900'
     }
   },
   zipCode: {
     type: String,
     required: true,
     trim: true,
+    validate: {
+      validator: v => /^\d{8}$/.test(v),
+      message: 'ZIP code must be exactly 8 digits'
+    }
   },
   street: {
     type: String,
