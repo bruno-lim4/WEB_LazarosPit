@@ -9,7 +9,7 @@
         <v-toolbar flat>
           <v-toolbar-title>
             <v-icon color="medium-emphasis" icon="mdi-book-multiple" size="x-small" start></v-icon>
-              Admins
+            Admins
           </v-toolbar-title>
 
           <v-btn
@@ -35,7 +35,6 @@
         {{ new Date(value).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) }}
       </template>
 
-
       <template v-slot:[`item.actions`]="{ item }">
         <div class="d-flex ga-2 justify-end">
           <v-icon color="medium-emphasis" icon="mdi-pencil" size="small" @click="openDialog(item._id)"></v-icon>
@@ -51,38 +50,55 @@
       :title="`${isEditing ? 'Edit' : 'Add'} an Admin`"
     >
       <template v-slot:text>
-        <v-row>
-          <v-col cols="12">
-            <v-text-field v-model="adminToBeAdded.name" label="Name"></v-text-field>
-          </v-col>
+        <v-form ref="form" lazy-validation v-model="formValid">
+          <v-row>
+            <v-col cols="12">
+              <v-text-field
+                v-model="adminToBeAdded.name"
+                label="Name"
+                :rules="[rules.required]"
+              ></v-text-field>
+            </v-col>
 
-          <v-col cols="12" md="6">
-            <v-text-field v-model="adminToBeAdded.email" label="Email"></v-text-field>
-          </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field
+                v-model="adminToBeAdded.email"
+                label="Email"
+                :rules="[rules.required, rules.email]"
+              ></v-text-field>
+            </v-col>
 
-          <v-col cols="12" md="6">
-            <v-text-field v-model="adminToBeAdded.password" label="Password"></v-text-field>
-          </v-col>
+            <v-col v-if='!isEditing' cols="12" md="6">
+              <v-text-field
+                v-model="adminToBeAdded.password"
+                label="Password"
+                type="password"
+                :rules="[rules.required, rules.password]"
+              ></v-text-field>
+            </v-col>
 
-          <v-col cols="12" md="6">
-            <v-text-field v-model="adminToBeAdded.phoneNumber" label="Phone Number"></v-text-field>
-          </v-col>
-
-        </v-row>
+            <v-col cols="12" md="6">
+              <v-text-field
+                v-model="adminToBeAdded.phoneNumber"
+                label="Phone Number"
+                :rules="[rules.required, rules.phoneNumber]"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        </v-form>
       </template>
 
       <v-divider></v-divider>
 
       <v-card-actions class="bg-surface-light">
         <v-btn text="Cancel" variant="plain" @click="dialog = false"></v-btn>
-
         <v-spacer></v-spacer>
-
-        <v-btn text="Save" @click="saveAdmin"></v-btn>
+        <v-btn text="Save" @click="saveAdmin" :disabled="!formValid"></v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
+
 <script>
 import { getAdmins, getAdminById, createAdmin, updateAdmin, deleteAdmin } from '@/services/adminService';
 
@@ -92,9 +108,15 @@ export default {
   data() {
     return {
       admins: [],
-      adminToBeAdded: { name: '', email: '', phoneNumber: '', password: '' },
+      adminToBeAdded: {
+        name: '',
+        email: '',
+        phoneNumber: '',
+        password: ''
+      },
       dialog: false,
       isEditing: false,
+      formValid: false,
       headers: [
         { title: 'Name', value: 'name', align: 'start' },
         { title: 'Email', value: 'email' },
@@ -102,6 +124,12 @@ export default {
         { title: 'Account Created At', value: 'createdAt' },
         { title: 'Actions', value: 'actions', align: 'end', sortable: false },
       ],
+      rules: {
+        required: v => !!v || 'This field is required',
+        email: v => !!v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Invalid email format',
+        password: v => !!v && v.length >= 6 || 'Password must be at least 6 characters long',
+        phoneNumber: v => !!v && /^\d+$/.test(v) || 'Phone number must contain digits only'
+      }
     }
   },
 
@@ -130,7 +158,7 @@ export default {
           name: '',
           email: '',
           phoneNumber: '',
-          password: '',
+          password: ''
         };
       }
 
@@ -142,6 +170,9 @@ export default {
     },
 
     async saveAdmin() {
+      const isValid = await this.$refs.form.validate();
+      if (!isValid) return;
+
       if (this.isEditing) {
         await updateAdmin(this.adminToBeAdded._id, this.adminToBeAdded);
       } else {
@@ -150,7 +181,7 @@ export default {
       }
       this.dialog = false;
       await this.fetchAdmins();
-    },
+    }
   }
 }
 </script>

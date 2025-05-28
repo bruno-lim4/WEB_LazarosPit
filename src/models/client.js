@@ -22,7 +22,8 @@ const schema = new Schema({
   password: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    minlength: [6, 'Password must be at least 6 characters long']
   },
   phoneNumber: {
     type: String,

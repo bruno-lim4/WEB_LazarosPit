@@ -56,13 +56,13 @@
       :subtitle="`${isEditing ? 'Update' : 'Create'}`"
     >
       <template v-slot:text>
-        <v-form ref="form" lazy-validation>
+        <v-form ref="form" lazy-validation v-model="formValid">
           <v-row>
             <v-col cols="12" md="6">
               <v-text-field
                 v-model="customerToBeAdded.name"
                 label="Name"
-                required
+                :rules="[rules.required]"
               />
             </v-col>
 
@@ -70,8 +70,8 @@
               <v-text-field
                 v-model="customerToBeAdded.email"
                 label="Email"
-                required
                 type="email"
+                :rules="[rules.required, rules.email]"
               />
             </v-col>
 
@@ -80,8 +80,8 @@
                 v-model="customerToBeAdded.password"
                 label="Password"
                 type="password"
-                :rules="[v => !!v || 'Password is required']"
                 v-if="!isEditing"
+                :rules="[rules.required, rules.password]"
               />
             </v-col>
 
@@ -89,7 +89,7 @@
               <v-text-field
                 v-model="customerToBeAdded.phoneNumber"
                 label="Phone Number"
-                required
+                :rules="[rules.required, rules.phoneNumber]"
               />
             </v-col>
 
@@ -99,7 +99,7 @@
                 label="Weight (kg)"
                 :min="20"
                 :max="500"
-                required
+                :rules="[rules.required, rules.weight]"
               />
             </v-col>
 
@@ -108,7 +108,7 @@
                 v-model="customerToBeAdded.birthDate"
                 label="Birth Date"
                 type="date"
-                required
+                :rules="[rules.required, rules.birthDate]"
               />
             </v-col>
 
@@ -116,7 +116,7 @@
               <v-text-field
                 v-model="customerToBeAdded.zipCode"
                 label="Zip Code"
-                required
+                :rules="[rules.required, rules.zipCode]"
               />
             </v-col>
 
@@ -124,7 +124,7 @@
               <v-text-field
                 v-model="customerToBeAdded.street"
                 label="Street"
-                required
+                :rules="[rules.required]"
               />
             </v-col>
 
@@ -132,7 +132,7 @@
               <v-text-field
                 v-model="customerToBeAdded.addressNumber"
                 label="Address Number"
-                required
+                :rules="[rules.required]"
               />
             </v-col>
 
@@ -140,7 +140,7 @@
               <v-text-field
                 v-model="customerToBeAdded.neighborhood"
                 label="Neighborhood"
-                required
+                :rules="[rules.required]"
               />
             </v-col>
 
@@ -148,7 +148,7 @@
               <v-text-field
                 v-model="customerToBeAdded.city"
                 label="City"
-                required
+                :rules="[rules.required]"
               />
             </v-col>
 
@@ -156,7 +156,7 @@
               <v-text-field
                 v-model="customerToBeAdded.state"
                 label="State"
-                required
+                :rules="[rules.required]"
               />
             </v-col>
 
@@ -175,7 +175,7 @@
       <v-card-actions class="bg-surface-light">
         <v-btn variant="plain" text="Cancel" @click="dialog = false"/>
         <v-spacer/>
-        <v-btn color="primary" text="Save" @click="saveCustomer"/>
+        <v-btn color="primary" text="Save" @click="saveCustomer" :disabled="!formValid"/>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -195,6 +195,8 @@ export default {
 
   data() {
     return {
+      formValid: false,
+
       clients: [],
       customerToBeAdded: {
         name: '',
@@ -221,7 +223,34 @@ export default {
         { title: 'Birth Date', value: 'birthDate' },
         { title: 'Account Created At', value: 'createdAt' },
         { title: 'Actions', value: 'actions', align: 'end', sortable: false }
-      ]
+      ],
+      rules: {
+        required: v => !!v || 'This field is required',
+
+        email: v =>
+          !!v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Invalid email format',
+
+        password: v =>
+          !!v && v.length >= 6 || 'Password must be at least 6 characters long',
+
+        phoneNumber: v =>
+          !!v && /^\d+$/.test(v) || 'Phone number must contain digits only',
+
+        weight: v =>
+          v >= 20 && v <= 500 || 'Weight must be between 20 and 500 kg',
+
+        birthDate: v => {
+          if (!v) return 'Birth date is required';
+          const date = new Date(v);
+          const now = new Date();
+          return date < now && date.getFullYear() >= 1900
+            || 'Birth date must not be in the future and year must be ≥ 1900';
+        },
+
+        zipCode: v =>
+          !!v && /^\d{8}$/.test(v) || 'ZIP code must be exactly 8 digits'
+      }
+
     }
   },
 
