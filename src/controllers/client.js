@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 import Client from '../models/client.js'; 
+import Admin from '../models/admin.js';
 import bcrypt from "bcrypt";
 
 const controller = {};
@@ -34,9 +36,41 @@ controller.post = async (req, res) => {
             // Erro de duplicidade de e-mail
             return res.status(409).json({ error: 'This email is already registered.' });
         }
-        res.status(400).send({ error: e.message });
+        res.status(400).json({ error: 'Registration failed.' });
     }
 };
+
+controller.postLogin = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        let isAdmin = false
+
+        let user = await Admin.findOne({ email });
+
+        if (user) {
+            isAdmin = true;
+        } else {
+            user = await Client.findOne({ email });
+            if (!user) return res.status(400).json({error:'Invalid email or password'});
+        }
+
+        const correctPasswd = await bcrypt.compare(password, user.password);
+        if (!correctPasswd) return res.status(400).json({error:'Invalid email or password'});
+
+        const token = jwt.sign(
+            {
+                userId: user._id,
+                email: user.email,
+                isAdmin
+            },
+            process.env.JWT_SECRET,
+            { expiresIn: '2h' }
+        );
+        res.status(200).json({ token });
+    } catch(e) {
+        res.status(500).json({ error: e });
+    }
+}
 
 controller.put = async (req, res) => {
     try {

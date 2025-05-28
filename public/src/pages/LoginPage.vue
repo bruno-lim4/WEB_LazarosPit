@@ -81,6 +81,9 @@
 </template>
   
 <script>
+import { userLogin } from '@/services/clientService';
+import { getUserFromToken } from '@/utils/auth';
+
 export default {
 data() {
     return {
@@ -99,11 +102,24 @@ data() {
     };
 },
 methods: {
-    login() {
-    if (this.$refs.form.validate()) {
-        alert(`Login válido!\nEmail: ${this.email}\nSenha: ${this.password}`);
-        // Aqui você pode colocar a chamada à API para autenticar
-    }
+    async login() {
+      if (this.$refs.form.validate()) {
+          try {
+            const res = await userLogin({email: this.email, password: this.password})
+            const { token } = res.data;
+
+            localStorage.setItem('token', token);
+
+            const user = getUserFromToken();
+            this.$root.userIsLoggedIn = true;
+            this.$root.userIsAdmin = user.isAdmin;
+
+            this.$router.push({ name: 'HomePage' });
+          } catch (e) {
+            console.error(e)
+            alert("Login error. "+e.response.data?.error)
+          }
+      }
     },
     goToRegisterPage() {
         this.$router.push({name: 'RegisterPage'})

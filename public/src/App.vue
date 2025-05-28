@@ -9,23 +9,33 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
+import { getUserFromToken } from './utils/auth'
 
 export default {
   name: 'App',
-  components: { NavBar},
+  components: { NavBar },
   methods: {
     buscaPorNomeDeProdutoNaAPI(pesquisa) {
-      console.log('Busca realizada:', pesquisa)
+      console.log('Busca realizada:', pesquisa);
     },
-    logUserOut(){
+    logUserOut() {
+      localStorage.removeItem('token');
       this.userIsLoggedIn = false;
       this.userIsAdmin = false;
+      this.$router.push('/login');
     }
   },
-  data () {
+  data() {
     return {
-      userIsLoggedIn: true,
-      userIsAdmin: true,
+      userIsLoggedIn: false,
+      userIsAdmin: false
+    }
+  },
+  created() {
+    const user = getUserFromToken();
+    if (user) {
+      this.userIsLoggedIn = user.isLoggedIn;
+      this.userIsAdmin = user.isAdmin;
     }
   }
 }
