@@ -44,6 +44,9 @@
         components: {
             ProductCard
         },
+        props: {
+            pesquisa: { type: String, default: '' }
+        },
         data() {
             return {
             selectedCategory: null,
@@ -53,13 +56,23 @@
         },
         computed: {
             filteredProducts() {
-                if (!this.selectedCategory || this.selectedCategory === 'All tags') {
-                    return this.products
+                console.log(this.pesquisa)
+                let list = this.products
+
+                // filtra por busca
+                if (this.pesquisa.trim()) {
+                    const term = this.pesquisa.toLowerCase()
+                    list = list.filter(p => p.name.toLowerCase().includes(term))
                 }
-                return this.products.filter(
-                    p => (p.tags.some(tag => tag.name === this.selectedCategory))
-                )
-            },
+
+                // filtra pela tag escolhida
+                if (this.selectedCategory && this.selectedCategory !== 'All tags') {
+                    list = list.filter(p =>
+                        p.tags.some(tag => tag.name === this.selectedCategory)
+                    )
+                }
+                return list
+            }
         },
         methods: {
             goToProductPage(product) {

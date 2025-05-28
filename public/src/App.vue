@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <NavBar @buscaFoiRealizada="buscaPorNomeDeProdutoNaAPI" @logUserOut="logUserOut" :userIsLoggedIn="userIsLoggedIn" :userIsAdmin="userIsAdmin"/>
+    <NavBar @buscaFoiRealizada="buscaPorNomeDeProduto" @logUserOut="logUserOut" :userIsLoggedIn="userIsLoggedIn" :userIsAdmin="userIsAdmin"/>
     <v-main>
-      <router-view/>
+      <router-view :pesquisa="pesquisa" />
     </v-main>
   </v-app>
 </template>
@@ -15,8 +15,8 @@ export default {
   name: 'App',
   components: { NavBar },
   methods: {
-    buscaPorNomeDeProdutoNaAPI(pesquisa) {
-      console.log('Busca realizada:', pesquisa);
+    buscaPorNomeDeProduto(pesquisa) {
+      this.pesquisa = pesquisa;
     },
     logUserOut() {
       localStorage.removeItem('token');
@@ -28,7 +28,8 @@ export default {
   data() {
     return {
       userIsLoggedIn: false,
-      userIsAdmin: false
+      userIsAdmin: false,
+      pesquisa: '',
     }
   },
   created() {
