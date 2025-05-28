@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Admin from '../models/admin.js';
+import bcrypt from 'bcrypt';
 
 const controller = {};
 
@@ -23,6 +24,7 @@ controller.getById = async (req, res) => {
 };
 
 controller.post = async (req, res) => {
+    req.body.password = await bcrypt.hash(req.body.password, 10);
     const admin = new Admin(req.body);
     try {
         await admin.save();
