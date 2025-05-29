@@ -25,16 +25,8 @@
 
       <template v-slot:[`item.birthDate`]="{ value }">
         {{
-          value && !isNaN(Date.parse(value))
-            ? new Date(value).toLocaleDateString('pt-BR')
-            : '–'
-        }}
-      </template>
-
-      <template v-slot:[`item.createdAt`]="{ value }">
-        {{
-          value && !isNaN(Date.parse(value))
-            ? new Date(value).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
+          typeof value === 'string' && value.includes('T')
+            ? value.split('T')[0].split('-').reverse().join('/')
             : '–'
         }}
       </template>
@@ -309,7 +301,6 @@ export default {
         await updateClient(this.customerToBeAdded._id, this.customerToBeAdded);
       } else {
         delete this.customerToBeAdded.createdAt;
-        console.log('Payload:', this.customerToBeAdded);
         await createClient(this.customerToBeAdded);
       }
       this.dialog = false;
