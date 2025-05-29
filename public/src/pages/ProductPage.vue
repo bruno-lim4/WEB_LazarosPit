@@ -82,7 +82,7 @@
             </v-col>
           </v-row>
           <v-row cols="auto">
-            <v-col cols="12">Total: R$ {{ (quantityToBeBought * this.product.price).toFixed(2) }}</v-col>
+            <v-col cols="12">Total: $ {{ (quantityToBeBought * this.product.price).toFixed(2) }}</v-col>
             
           </v-row>
         </v-container>
