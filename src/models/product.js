@@ -16,7 +16,8 @@ const schema = new Schema({
   price: {
     type: Number,
     required: true,
-    min: [0, "Price must be a positive number"]
+    min: [0, "Price must be a positive number"],
+    set: v => Math.round(v * 100) / 100
   },
   quantity: {
     type: Number,
