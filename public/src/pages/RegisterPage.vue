@@ -261,7 +261,7 @@ export default {
             v => /^\d{8}$/.test(v) || 'ZIP code must contain exactly 8 digits'
         ],
         streetRules: [v => !!v || 'Street is required'],
-        numberRules: [v => !!v || 'Number is required'],
+        numberRules: [v => !!v || 'Number is required', v => /^\d+$/.test(v) || 'Number must contain digits only'],
         neighborhoodRules: [v => !!v || 'Neighborhood is required'],
         cityRules: [v => !!v || 'City is required'],
         stateRules: [v => !!v || 'State is required'],

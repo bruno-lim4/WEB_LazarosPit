@@ -65,7 +65,8 @@ const schema = new Schema({
   addressNumber: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    match: [/^\d+$/, 'Address Number must contain digits only']
   },
   neighborhood: {
     type: String,
