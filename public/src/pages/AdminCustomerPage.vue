@@ -31,6 +31,15 @@
         }}
       </template>
 
+
+      <template v-slot:[`item.createdAt`]="{ value }">
+        {{
+          value && !isNaN(Date.parse(value))
+            ? new Date(value).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
+            : '–'
+        }}
+      </template>
+
       <!-- Ações de editar/deletar -->
       <template v-slot:[`item.actions`]="{ item }">
         <div class="d-flex gap-2 justify-end">
