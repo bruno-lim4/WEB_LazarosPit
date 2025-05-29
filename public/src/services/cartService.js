@@ -6,7 +6,10 @@ export const getCarts = async () => {
     return res.data;
 }
 
-export const getCartById = (id) => api.get(`/cart/${id}`);
+export const getCartById = async (id) => {
+    const res = await api.get(`/cart/${id}`);
+    return res.data;
+}
 
 export const getByClient = async (id) => {
     const res = await api.get(`/cart/client/${id}`);

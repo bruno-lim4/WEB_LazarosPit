@@ -34,10 +34,9 @@ controller.getByClient = async (req, res) => {
   }
 
   try {
-    const carts = await Cart.find({ client: clientId })
+    const carts = await Cart.find({ client: clientId, sold: false })
       .populate('client', 'name email')
-      .populate('products.product', 'name price');
-
+      .populate('products.product', 'name price image');
     return res.status(200).send(carts);
   } catch (e) {
     return res.status(400).send({ error: e.message });
