@@ -91,7 +91,7 @@
   </template>
   
   <script>
-import { getByClient } from '@/services/cartService';
+import { getByClient, setProductQuantity } from '@/services/cartService';
 import { getUserFromToken } from '@/utils/auth';
 
   export default {
@@ -131,12 +131,18 @@ import { getUserFromToken } from '@/utils/auth';
           this.cartItems = [];
         }
       },
-      incrementQuantity(index) {
-        this.cartItems[index].quantity++
+      async incrementQuantity(index) {
+        if(true) {
+          this.cartItems[index].quantity++;
+          await setProductQuantity({ productId: this.cartItems[index].id, quantity: this.cartItems[index].quantity });
+          await this.fetchCartItems();
+        }  
       },
-      decrementQuantity(index) {
+      async decrementQuantity(index) {
         if (this.cartItems[index].quantity > 1) {
-          this.cartItems[index].quantity--
+          this.cartItems[index].quantity--;
+          await setProductQuantity({ productId: this.cartItems[index].id, quantity: this.cartItems[index].quantity });
+          await this.fetchCartItems();
         }
       },
       removeItem(index) {
@@ -146,8 +152,8 @@ import { getUserFromToken } from '@/utils/auth';
         alert(`Checkout - Total: R$ ${this.totalSum.toFixed(2)}`)
       },
     },
-    mounted() {
-      this.fetchCartItems();
+    async mounted() {
+      await this.fetchCartItems();
     }
   }
   </script>
