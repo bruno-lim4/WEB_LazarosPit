@@ -213,9 +213,19 @@ export default {
         const new_quant = prod.quantity - qtd;
         const new_sold = prod.quantitySold + qtd;
 
+        let active = true;
+
+        if (new_quant < 0) {
+          alert('Some cart items are out of stock')
+          return;
+        } else if (new_quant === 0) {
+          active = false;
+        }
+
         await updateProduct(prod_id, {
           "quantitySold": new_sold,
-          "quantity": new_quant
+          "quantity": new_quant,
+          "active": active
         })
       })
       
