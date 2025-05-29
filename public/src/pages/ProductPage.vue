@@ -26,7 +26,7 @@
           </v-row>
           <v-row>
             <v-col>
-                <span style="color:#4CAF50; font-size:1.6rem">$ {{ product.price }}</span>
+                <span style="color:#4CAF50; font-size:1.6rem">R$ {{ product.price }}</span>
             </v-col>
           </v-row>
         </v-sheet>
@@ -89,30 +89,39 @@
   
 <script>
   import { getProductById } from '@/services/productService';
-    export default {
-      name: 'ProductPage',
-      computed: {
-          productId() {
-            return this.$route.params.id
-          }
-      },
-      data() {
-        return {
-          quantityToBeBought: 1,
-          product: {},
+  import { addToCart } from '@/services/cartService';
+
+  export default {
+    name: 'ProductPage',
+    computed: {
+        productId() {
+          return this.$route.params.id
         }
+    },
+    data() {
+      return {
+        quantityToBeBought: 1,
+        product: {},
+      }
+    },
+    async mounted() {
+      this.product = await getProductById(this.$route.params.id);
+    },
+    methods: {
+      goToHomePage() {
+        this.$router.push({ name: 'HomePage' })
       },
-      async mounted() {
-        this.product = await getProductById(this.$route.params.id);
-      },
-      methods: {
-        goToHomePage() {
-          this.$router.push({ name: 'HomePage' })
+      async addToCart() {
+        try {
+          await addToCart({
+            productId: this.product._id,
+            quantity: this.quantityToBeBought,
+          });
+        } catch (e) {
+          console.error(e);
         }
-      },
-    }
+      }
+    },
+  }
 </script>
-  
-<style scoped>
-</style>
   
