@@ -8,6 +8,7 @@ export function getUserFromToken() {
   try {
     const decoded = jwtDecode(token);
     return {
+      id: decoded.userId,
       email: decoded.email,
       isAdmin: decoded.isAdmin === true,
       isLoggedIn: true
@@ -16,4 +17,8 @@ export function getUserFromToken() {
     console.log(e);
     return null;
   }
+}
+
+export function getToken() {
+  return localStorage.getItem('token');
 }

@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { addToCart } from '@/services/cartService';
+
 export default {
     name: 'ProductCard',
     props: {
@@ -56,8 +58,15 @@ export default {
         },
     },
     methods: {
-      addToCart() {
-        console.log('adicionei ao carrinho')
+      async addToCart() {
+        try {
+          await addToCart({
+            productId: this.product._id,
+            quantity: 1,
+          });
+        } catch (e) {
+          console.error(e);
+        }
       }
     }
 }
