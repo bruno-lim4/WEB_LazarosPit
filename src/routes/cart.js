@@ -1,5 +1,6 @@
 import express from 'express';
 import controller from '../controllers/cart.js';
+
 import authenticateToken from '../middleware/authenticateToken.js';
 
 const router = express.Router();
