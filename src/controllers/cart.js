@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Cart from "../models/cart.js";
+import Product from "../models/product.js";
 
 const controller = {};
 
@@ -49,11 +50,12 @@ controller.setProductQuantity = async (req, res) => {
     const clientId = req.user.userId;
 
     let cart = await Cart.findOne({ client: clientId, sold: false });
-
+    const product = await Product.findById(productId);
+    const quantityToBeSet = Math.min(product.quantity, quantity);
     if (!cart) {
       cart = new Cart({
         client: clientId,
-        products: [{ product: productId, quantity }],
+        products: [{ product: productId, quantity: quantityToBeSet}],
       });
     } else {
       const idx = cart.products.findIndex(
@@ -61,9 +63,9 @@ controller.setProductQuantity = async (req, res) => {
       );
 
       if (idx > -1) {
-        cart.products[idx].quantity = quantity; // <-- Seta diretamente
+        cart.products[idx].quantity = quantityToBeSet;
       } else {
-        cart.products.push({ product: productId, quantity });
+        cart.products.push({ product: productId, quantity: quantityToBeSet});
       }
     }
 
@@ -101,30 +103,41 @@ controller.removeProductFromCart = async (req, res) => {
 
 export async function addItemToCart(clientId, productId, quantity = 1) {
   try {
+    const product = await Product.findById(productId);
+    if (!product) {
+      throw new Error("Produto não encontrado.");
+    }
+
     let cart = await Cart.findOne({ client: clientId, sold: false });
 
     if (!cart) {
+      const addQuantity = Math.min(product.quantity, quantity);
       cart = new Cart({
         client: clientId,
-        products: [{ product: productId, quantity }],
+        products: [{ product: productId, quantity: addQuantity }],
       });
     } else {
       const idx = cart.products.findIndex(
-        (p) => p.product.toString() === productId.toString(),
+        (p) => p.product.toString() === productId.toString()
       );
 
       if (idx > -1) {
-        cart.products[idx].quantity += quantity;
+        const currentQty = cart.products[idx].quantity;
+        const maxAdd = product.quantity - currentQty;
+        const addQuantity = Math.min(maxAdd, quantity);
+        cart.products[idx].quantity += addQuantity;
       } else {
-        cart.products.push({ product: productId, quantity });
+        const addQuantity = Math.min(product.quantity, quantity);
+        cart.products.push({ product: productId, quantity: addQuantity });
       }
     }
-      await cart.save();
-      return cart;
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
+
+    await cart.save();
+    return cart;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 }
 
 controller.post = async (req, res) => {
