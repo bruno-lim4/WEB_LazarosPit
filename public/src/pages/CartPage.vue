@@ -172,7 +172,8 @@ export default {
       }
     },
     async incrementQuantity(index) {
-      this.cartItems[index].quantity++;
+      const product = await getProductById(this.cartItems[index].id);
+      this.cartItems[index].quantity = (this.cartItems[index].quantity === product.quantity) ? this.cartItems[index].quantity : this.cartItems[index].quantity + 1;
       await setProductQuantity({ productId: this.cartItems[index].id, quantity: this.cartItems[index].quantity });
       await this.fetchCartItems();
     },
