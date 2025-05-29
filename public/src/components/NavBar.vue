@@ -50,7 +50,7 @@
         <v-btn icon @click="goToCalculatorPage">
           <v-icon>mdi-calculator</v-icon>
         </v-btn>
-        <v-btn icon class="text-white mr-2" @click="goToCart">
+        <v-btn icon class="text-white mr-2" v-if="userIsLoggedIn&&!userIsAdmin" @click="goToCart">
           <v-icon>mdi-cart</v-icon>
         </v-btn>
       </v-col>
@@ -80,9 +80,9 @@
           <v-list-item-title>Log Out</v-list-item-title>
         </v-list-item>
 
-        <v-list-item @click="goToCart" link>
+        <v-list-item v-if="userIsLoggedIn&&!userIsAdmin" @click="goToCart" link>
           <v-icon>mdi-cart</v-icon>
-          <v-list-item-title>Carrinho</v-list-item-title>
+          <v-list-item-title>Cart</v-list-item-title>
         </v-list-item>
 
         <v-list-item @click="goToCalculatorPage" link>

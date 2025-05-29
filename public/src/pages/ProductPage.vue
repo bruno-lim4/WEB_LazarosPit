@@ -25,6 +25,20 @@
             </v-col>
           </v-row>
           <v-row>
+            <v-card-text class="d-flex flex-wrap pl-3" style="gap: 0.5rem;">
+              <v-chip
+                v-for="tag in product.tags"
+                :key="tag._id || tag.name"
+                color="blue darken-2"
+                text-color="white"
+                label
+                small
+              >
+                {{ tag.name }}
+              </v-chip>
+            </v-card-text>
+          </v-row>
+          <v-row>
             <v-col>
                 <span style="color:#4CAF50; font-size:1.6rem">R$ {{ product.price }}</span>
             </v-col>
@@ -68,7 +82,7 @@
             </v-col>
           </v-row>
           <v-row cols="auto">
-            <v-col cols="12">Total: R$ {{ (quantityToBeBought * this.product.price).toFixed(2) }}</v-col>
+            <v-col cols="12">Total: $ {{ (quantityToBeBought * this.product.price).toFixed(2) }}</v-col>
             
           </v-row>
         </v-container>
@@ -102,10 +116,14 @@
       return {
         quantityToBeBought: 1,
         product: {},
+        productTags: []
       }
     },
     async mounted() {
       this.product = await getProductById(this.$route.params.id);
+      this.product.tags.forEach(element => {
+        this.productTags.push(element.name);
+      }); 
     },
     methods: {
       goToHomePage() {

@@ -133,7 +133,7 @@
               <v-text-field
                 v-model="customerToBeAdded.addressNumber"
                 label="Address Number"
-                :rules="[rules.required]"
+                :rules="[rules.required, rules.addressNumber]"
               />
             </v-col>
 
@@ -247,6 +247,9 @@ export default {
           return date < now && date.getFullYear() >= 1900
             || 'Birth date must not be in the future and year must be ≥ 1900';
         },
+
+        addressNumber: v=>
+          /^\d+$/.test(v) || 'Number must contain digits only',
 
         zipCode: v =>
           !!v && /^\d{8}$/.test(v) || 'ZIP code must be exactly 8 digits'

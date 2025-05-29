@@ -21,7 +21,7 @@ controller.getByTag = async (req, res) => {
 }
 controller.getById = async (req, res) => {
     try {
-        const data = await Product.findOne({_id: req.params.id});
+        const data = await Product.findOne({_id: req.params.id}).populate('tags', 'name');
         res.status(200).send(data);
     } catch (e) {
         res.status(400).send({e})

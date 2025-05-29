@@ -174,7 +174,7 @@ export default {
         { title: 'Actions', value: 'actions', align: 'end', sortable: false }
       ],
       rules: {
-        required: v => !!v || 'This field is required',
+        required: v => !!v || v === 0 || 'This field is required',
         price: v => !!v && parseFloat(v) > 0 || 'Price must be greater than 0',
         quantity: v => v >= 0 || 'Quantity must be 0 or greater',
         quantitySold: v => v >= 0 || 'Quantity Sold must be 0 or greater'

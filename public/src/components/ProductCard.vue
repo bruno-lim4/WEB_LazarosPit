@@ -1,7 +1,8 @@
 <template>
   <v-card
-    class="mx-auto mb-3"
+    class="mx-auto mb-3 d-flex flex-column justify-space-between"
     max-width="344"
+    height="100%"
   >
     <v-img
       height="200px"
@@ -29,6 +30,7 @@
         {{ tag.name }}
       </v-chip>
     </v-card-text>
+    <v-spacer></v-spacer>
 
     <v-card-actions>
       <v-btn
