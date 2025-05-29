@@ -8,7 +8,10 @@ const router = express.Router();
 
 router.get('/', authenticateToken, onlyAdmin, controller.get);
 router.get('/:id',authenticateToken, onlyAdmin, controller.getById);
-router.post('/', authenticateToken, onlyAdmin, controller.post);
+
+// tem q liberar se n ngm cria admin no começo
+router.post('/', controller.post);
+
 router.put('/:id', authenticateToken, onlyAdmin, controller.put);
 router.delete('/:id', authenticateToken, onlyAdmin, controller.delete);
 
