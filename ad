@@ -1,0 +1,288 @@
+[33mcommit 420139fc8fc5b159bc9fb77ae70e010cdb215aaa[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 19:59:10 2025 -0300
+
+    registro com bcrypt
+
+[33mcommit 990725c8a451977b08d12c5a7a7931aafbf6133e[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 19:49:52 2025 -0300
+
+    registro de usuarios funcionando
+
+[33mcommit ef848b464b882f9b1d52d089ed11459737b840f5[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 15:50:30 2025 -0300
+
+    macros calculator validation
+
+[33mcommit 9e90aff1997473f2b757411db7da54243dc92722[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 15:40:11 2025 -0300
+
+    agora mostra as tagzinhas na homepage
+
+[33mcommit 971a352217128ee78c2c152c9467eb072b6dfe6c[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 15:33:30 2025 -0300
+
+    imagem funcionando na productPage
+
+[33mcommit fb38a3050672b392cbba0b5d9b1d21a1a60e2bd8[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 15:28:08 2025 -0300
+
+    algumas validacoes nos schemas
+
+[33mcommit 5db1112db570cbb41a8398690ce5d65b6c342003[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Tue May 27 15:07:22 2025 -0300
+
+    homepage filter
+
+[33mcommit ef2d80152ad69902ea78e1675e48904c786bf251[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Tue May 27 14:33:12 2025 -0300
+
+    tags agora sao schemas
+
+[33mcommit 8708f29dceed00513280057ba5c7519fb1e20820[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Tue May 27 11:27:35 2025 -0300
+
+    cors e axios adicionados às dependencias do projeto, front nas home e product page recebem as informações por chamadas api
+
+[33mcommit 51d8e07329793ede454b293f9f5780afa6c2599e[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Tue May 27 10:44:06 2025 -0300
+
+    adição dos controllers dos demais schemas
+
+[33mcommit c0f9b12a86d4a7e44d0fa2769ab3fb84f7e2af59[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Tue May 27 08:33:44 2025 -0300
+
+    cart agora mais responsivo, incluindo os itens de produtos
+
+[33mcommit 76da0961ca164f5b01f2aa0fd88f3fd2c4be8a6a[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Mon May 26 20:48:06 2025 -0300
+
+    Remove node_modules do versionamento
+
+[33mcommit a272f4626bc8df4884c0366f276c676fa6d842d2[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Mon May 26 20:45:43 2025 -0300
+
+    nodejs server
+
+[33mcommit d971a1b9aeed9fdd5339fbf8dfe2ad23cffe3394[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Mon May 26 15:23:57 2025 -0300
+
+    navbar responsiva e funcional
+
+[33mcommit 5e0f7112417a42acae891132868cb212de4d7600[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Mon May 26 14:35:39 2025 -0300
+
+    admin dashboard melhorou a responsividade
+
+[33mcommit 42e89c09577bfcc5ac7aa8676dfa91c9f15e06ab[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 19:43:41 2025 -0300
+
+    opa
+
+[33mcommit 5e46a334f44567bbcb7747efc9113efa0a55a5e3[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 19:42:58 2025 -0300
+
+    FavIcon adicionado e tals
+
+[33mcommit 1d99ebed9b8ff848b8f866964a593380be268e03[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 19:22:20 2025 -0300
+
+    calculadora working
+
+[33mcommit 63256e73a248ed950341b9bbf7e8a25359e57e11[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 19:15:26 2025 -0300
+
+    adiciona o botao de ir para a pagina do admin
+
+[33mcommit 5a64fd963a45294fe6ab97d8fa11915892b910a8[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 19:07:17 2025 -0300
+
+    Botão de deslogar adicionado
+
+[33mcommit 5de2fce56d77813adb1f448902c4d524e5a1dd69[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 18:47:29 2025 -0300
+
+    macro visuals finished
+
+[33mcommit a7c4ec893589aef7b136b09cbbf704205cd585f7[m
+Merge: ae80bfc c5b178b
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 18:25:56 2025 -0300
+
+    opaMerge branch 'main' of github.com:bruno-lim4/WEB_LazarosPit
+
+[33mcommit ae80bfcfa188c92e50deceb0bb9c72dabec20c50[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 18:25:46 2025 -0300
+
+    macro quase la
+
+[33mcommit c5b178b9edac9a318867f13688025733e592651c[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 18:11:34 2025 -0300
+
+    adição de telas de admin
+
+[33mcommit 66f574564fe1eeeda683fe3b947ed0af1d9f84b3[m
+Merge: e99c408 911becf
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 17:03:37 2025 -0300
+
+    opaMerge branch 'main' of github.com:bruno-lim4/WEB_LazarosPit
+
+[33mcommit e99c4082fc3dc11b6ae6232d8888e986e15d2ab4[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 17:03:27 2025 -0300
+
+    um pouco mais bonito
+
+[33mcommit 911becf5beaa1035bca4f3ca16c3dd2f7957ac59[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 16:57:46 2025 -0300
+
+    Ajuste na reatividade da pagina
+
+[33mcommit 4eb376bb38f14a7f2806746e7c6b7e08936f29a0[m
+Merge: 6d5dd35 d32ad6a
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 16:53:07 2025 -0300
+
+    .Merge branch 'main' of github.com:bruno-lim4/WEB_LazarosPit
+
+[33mcommit 6d5dd35d3ccc6ea1057478650ccea379bc26850c[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 16:52:46 2025 -0300
+
+    theme
+
+[33mcommit d32ad6ae38b1f2ecdb3ae5a1d70dcfa56878b644[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 16:25:06 2025 -0300
+
+    Ajusta identações
+
+[33mcommit f81a97474f31979f9abb4d417b5296a22e646d4a[m
+Merge: d3978e2 a5d14ae
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 16:16:35 2025 -0300
+
+    admin page
+
+[33mcommit d3978e2a05dcf2ef02e35f5857e8a458ce65de31[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 16:15:13 2025 -0300
+
+    /admin page
+
+[33mcommit a5d14ae5fed7f7dc7d5bb14ddda9747db2c5b2dd[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 16:07:32 2025 -0300
+
+    Corrige erro de dpulicação no merge
+
+[33mcommit 23fc07d075e48e0db6cbb2aa8a9308bed6a829be[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 16:05:12 2025 -0300
+
+    Adicionada a pagina de carrinho
+
+[33mcommit e013164cbe1177bbaaca0562bbc5b7ba6f7c3422[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 15:29:09 2025 -0300
+
+    login/register frontend working as expected
+
+[33mcommit 1ee03553cd58b2e9fddfb7b24739a2a4fcad492d[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 15:04:44 2025 -0300
+
+    botao adicionado na navBar visando poder ir pra home
+
+[33mcommit 9d4bbb4796ca2305d3f4a9c3137cd0409571a5b5[m
+Merge: e4c97ea 844b651
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 15:00:34 2025 -0300
+
+    oi
+    
+    Merge branch 'main' of github.com:bruno-lim4/WEB_LazarosPit
+
+[33mcommit e4c97ea280de090e26ba1b80d2d414b7463622cb[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 14:59:50 2025 -0300
+
+    login page
+
+[33mcommit 844b6510243090dec5475ccfad87442dbd6c4f18[m
+Author: Lázaro Vinaud <lazaropereiravn@gmail.com>
+Date:   Sun May 25 14:56:05 2025 -0300
+
+    Mudanças na pagina de produto
+
+[33mcommit 0d606196d6454b8e4da46f5d7fc02bb9b63a34c9[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 11:53:12 2025 -0300
+
+    vou almocar
+
+[33mcommit 91c6c636bdb26aafdf727030b8cdff7a2a250660[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 10:29:20 2025 -0300
+
+    navbar agora funciona de vdd
+
+[33mcommit 27d83d679828a000b95801c16b9e7460c84f771e[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 09:55:22 2025 -0300
+
+    router adicionado
+
+[33mcommit 91d30790cbbc8e14fbd7a41d9b9bfd4dbe45006b[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 09:42:39 2025 -0300
+
+    navbar supinpa
+
+[33mcommit afbba417daca1f7c7d06d94a03430e8b5d63069e[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 08:41:52 2025 -0300
+
+    correcao de seguranca
+
+[33mcommit df43cd9a39403ddc1ae4de1f8f665bd448a30870[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 08:40:07 2025 -0300
+
+    NavBar e Vuetify adicionados
+
+[33mcommit 0f98df740a33ffc0f86e25dd39ae641778a7a625[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 08:19:31 2025 -0300
+
+    mudei tudo
+
+[33mcommit dc2971899d4a951a67597a744cf3fc88f9eb6edc[m
+Author: Bruno Lima <brunofigueiredolima@gmail.com>
+Date:   Sun May 25 08:15:12 2025 -0300
+
+    init

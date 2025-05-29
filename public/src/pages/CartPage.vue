@@ -65,14 +65,14 @@
   
             <v-row justify="space-between" class="mb-2">
               <div>Products</div>
-              <div>R$ {{ productsTotal.toFixed(2) }}</div>
+              <div>$ {{ productsTotal.toFixed(2) }}</div>
             </v-row>
   
             <v-divider class="my-3"></v-divider>
   
             <v-row justify="space-between" class="text-h6 font-weight-bold" style="color:#22c55e;">
               <div>Total</div>
-              <div>R$ {{ totalSum.toFixed(2) }}</div>
+              <div>$ {{ totalSum.toFixed(2) }}</div>
             </v-row>
   
             <v-btn
@@ -91,7 +91,7 @@
   </template>
   
   <script>
-import { getByClient } from '@/services/cartService';
+import { getByClient, setProductQuantity, removeProductFromCart } from '@/services/cartService';
 import { getUserFromToken } from '@/utils/auth';
 
   export default {
@@ -131,23 +131,30 @@ import { getUserFromToken } from '@/utils/auth';
           this.cartItems = [];
         }
       },
-      incrementQuantity(index) {
-        this.cartItems[index].quantity++
+      async incrementQuantity(index) {
+        
+          this.cartItems[index].quantity++;
+          await setProductQuantity({ productId: this.cartItems[index].id, quantity: this.cartItems[index].quantity });
+          await this.fetchCartItems();
+  
       },
-      decrementQuantity(index) {
+      async decrementQuantity(index) {
         if (this.cartItems[index].quantity > 1) {
-          this.cartItems[index].quantity--
+          this.cartItems[index].quantity--;
+          await setProductQuantity({ productId: this.cartItems[index].id, quantity: this.cartItems[index].quantity });
+          await this.fetchCartItems();
         }
       },
-      removeItem(index) {
-        this.cartItems.splice(index, 1)
+      async removeItem(index) {
+        await removeProductFromCart(this.cartItems[index].id);
+        this.cartItems.splice(index, 1);
       },
       checkout() {
         alert(`Checkout - Total: R$ ${this.totalSum.toFixed(2)}`)
       },
     },
-    mounted() {
-      this.fetchCartItems();
+    async mounted() {
+      await this.fetchCartItems();
     }
   }
   </script>

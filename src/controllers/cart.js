@@ -43,6 +43,62 @@ controller.getByClient = async (req, res) => {
   }
 };
 
+controller.setProductQuantity = async (req, res) => {
+  try {
+    const { productId, quantity } = req.body;
+    const clientId = req.user.userId;
+
+    let cart = await Cart.findOne({ client: clientId, sold: false });
+
+    if (!cart) {
+      cart = new Cart({
+        client: clientId,
+        products: [{ product: productId, quantity }],
+      });
+    } else {
+      const idx = cart.products.findIndex(
+        (p) => p.product.toString() === productId.toString()
+      );
+
+      if (idx > -1) {
+        cart.products[idx].quantity = quantity; // <-- Seta diretamente
+      } else {
+        cart.products.push({ product: productId, quantity });
+      }
+    }
+
+    await cart.save();
+    res.status(200).json(cart);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+controller.removeProductFromCart = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const clientId = req.user.userId;
+
+    const cart = await Cart.findOne({ client: clientId, sold: false });
+
+    if (!cart) return res.status(404).json({ message: "Carrinho não encontrado." });
+
+    cart.products = cart.products.filter(
+      (p) => p.product.toString() !== productId.toString()
+    );
+
+    if (cart.products.length === 0) {
+      await cart.deleteOne(); // Optionally delete empty cart
+      return res.status(200).json({ message: "Produto removido e carrinho vazio deletado." });
+    }
+
+    await cart.save();
+    res.status(200).json({ message: "Produto removido com sucesso", cart });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export async function addItemToCart(clientId, productId, quantity = 1) {
   try {
     let cart = await Cart.findOne({ client: clientId, sold: false });

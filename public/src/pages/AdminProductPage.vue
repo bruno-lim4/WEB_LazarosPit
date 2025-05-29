@@ -190,6 +190,9 @@ export default {
   methods: {
     async fetchProducts() {
       this.products = await getProducts();
+      this.products.forEach(e => {
+        e.tags = e.tags.map(t=>t.name).join(", ")
+      })
     },
     async fetchTags() {
       this.tags = await getTags();

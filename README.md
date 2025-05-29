@@ -27,6 +27,8 @@ Additional requirements for our store implementation:
 We are developing a responsive web application that allows users to browse, search, and purchase supplements online, as well as calculate their BMI and daily macronutrient needs.
 
 ### Functionalities 
+
+#### Functional Requirements  
 - User authentication (sign up, login).
   
   A card is displayed in a dedicated page which contains input fields for the user to type in its email and password, both the login and register pages are acessible by the home page. Registration also requires the user to input its address and phone number.
@@ -59,9 +61,21 @@ We are developing a responsive web application that allows users to browse, sear
   This is made by the addition of alternative description for images.
 - **BMI Calculator page:**  
   Users input their height and weight, and the application calculates and displays their Body Mass Index (BMI). Also, it is possible to input average exercise level, exercise duration and frequency alongside with body fat percentage in order to calculate the adequate macro-nutrients.
-### Navigation Diagram`
 
-![](https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Navigation.drawio.png&dark=auto#R%3Cmxfile%3E%3Cdiagram%20id%3D%22C5RBs43oDa-KdzZeNtuy%22%20name%3D%22Page-1%22%3E7Vtbd5s4EP41fkwPEgbbj7GTptlNu9njtmme9mhBAbYYOUL40l%2B%2FwkgGRGJj1xiRkyejYXRh9M2n0UjumZPZ6oaiuf%2BZuDjsQcNd9cyrHoTAGBn8J5WsM4llCYFHA1co5YJp8AvLmkKaBC6OS4qMkJAF87LQIVGEHVaSIUrJsqz2RMJyr3Pk4Ypg6qCwKn0IXOZn0iEc5PJPOPB82TOwR9mbGZLK4ktiH7lkWRCZ1z1zQglh2dNsNcFhajxpl4fb9UN499O%2B%2BePv%2BBl9G%2F%2F59cv3i6yxj4dU2X4CxRE7uum%2F2NPo%2B9D4h361Z%2F1HHN%2F7z88XcpZitpYGwy63nygSynzikQiF17l0TEkSuTht1uClXOeOkDkXAi78DzO2FmBACSNc5LNZKN7iVcB%2BFJ4f06Y%2BWKJ0tRItbwprWYgYXf8oFgq10mJebVOS9WKGKLtMgcQFTojiOHCk%2BGMQyiHVNLGYipgk1ME77CrMyjvxMNtl%2F0wvtXkBrmICbzCZYf4tXIHiELFgUcY0Eq7hbfXy6ecPAgEHoAGO2kRDjoDHwpt9aMgB8Fia%2Fy6iAVpawcGskkMjrl93qt%2FQRNtaTbQY9gKFiejpC1qMEd0z%2FUs%2FYHg6RxuTLHn4UJ7qw2y7wJTh1U5jiLemLcYrI5K%2BKC%2Fz9R3IRdsvrO2y3sntByr2G3%2B%2B5YIJCp2ETyDR1JJ2XztLmhVT9qAd8m7HbrDgjx7b2CMTPRFuj6JZ7eeEyBcX8YaDLrkCsOarrJp4Lxvi4%2Bcf4c6CSDbJR521Wu6Ji0v967JKGjWps7xKgj3keWJWhHWDIagVK8IKFO%2BIxwW3kZ7eDEZlbzZb9%2BaqM08DL9LYhBbUzYT9F%2FhQJZ%2FIrQY6BWOVLXvOvVdLPGLWpJHCpFovzKmU1WYb0cM9CTbLkgxXQBlTfahgJftuUau4gVcbUuIec6A0lBmm0tAGd9vPPh6K9pFQfCUU34vQ4%2FaDh2wSWsKn8Y7PJvA5aIoqjwIiaBGI5jsQ2wQiGOyJbk6VMm0%2BYRqRCCtpkwbwCuoyJ%2BjXROx5dghgWGWYN5w91w0MemVLQTV5rk%2B2tNsTrVe2VI57d47qMssqGVco9v8liLo1U0la7IPVVAKw2t4HvxTMaU615QjwA9zngk5CF5vBNnAwIRfOk4WEh8V6nFjQuqAwT0Ov%2BPVQcKBEcCPlaHuPumVZCuCyAZw2ynspNfMqDcxQhDw8w5vUcmd4oG%2BVDWu3TgOgYqh3GjiABqxu0YCSjgXDPTwA2%2BABqw4PfIsxfTM0oEE40L17S7%2FFAzGj5Of2AlsTzGB3ihnsYRmRcLCbGVT98zBDNWM%2BSWLG21WpoAtOD1s%2FC4O1Iq7giauExPO4AXmDkX5H%2BBpde0zvOojxAuv0rAJPnYk%2B08l%2F9eA6O%2FoniabOqvhq%2Bxd5zFb362e%2FSnqejBmsG77L2%2B26%2BFOtEPkT740r3acX%2BjsUHKunTdtNSHu%2B1%2Bom2ej9fnCsYbYa1g2QNbvEDatB6BQj6vhcpu0VX%2FViqgY%2B1e%2BcT5Uixn1XPpvMOsnVqCN7SzWYGpm795aqvm0YCtwa2FvC6m2Xe0rcxGHbJVRHx1YXy5HRnGPzYv7nvMzu%2BV8czev%2FAQ%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E)
+
+=======
+
+#### Non-Functional Requirements
+
+- Single Page Application
+- Responsive
+- Secure system
+  Customers can't access pages and functionalities exclusive to admins.
+
+### Navigation Diagram
+
+![Navigation](https://github.com/user-attachments/assets/9eb36547-544e-4f29-b0bc-9ede46100dac)
+
 
 ### Screen Mockups
 
@@ -78,8 +92,7 @@ We are developing a responsive web application that allows users to browse, sear
 | Product Management       | Mockup9     |  
 | BMI/MACROS Calculator    | Mockup10     |  
 
-Link for mockups in figma: 
-https://www.figma.com/design/2h4s1tf1CYpqzjQtGRLKmG/Lazaros-Pit?node-id=0-1&m=dev&t=Zwt4Nz8rAqG4uodn-1
+[Mockups in figma](https://www.figma.com/design/2h4s1tf1CYpqzjQtGRLKmG/Lazaros-Pit?node-id=0-1&m=dev&t=Zwt4Nz8rAqG4uodn-1).
 ### Information Saved in the Server
 - The admin records:
 	- Name
@@ -103,7 +116,97 @@ https://www.figma.com/design/2h4s1tf1CYpqzjQtGRLKmG/Lazaros-Pit?node-id=0-1&m=de
 
 The BMI and Macronutrient calculator results won't be saved on the server; they are generated dynamically based on user input.
 
-## 3.
+## 3. Comments about the code
+```
+├── ad
+├── babel.config.js
+├── bin
+│   └── server.js
+├── entrega1
+│   ├── README.md
+│   └── templates
+│       ├── home.html
+│       ├── imgs
+│       │   ├── image.png
+│       │   ├── search.png
+│       │   ├── shopping-cart.png
+│       │   └── user-avatar.png
+│       ├── login.html
+│       ├── product.html
+│       └── style.css
+├── jsconfig.json
+├── package.json
+├── package-lock.json
+├── public
+│   ├── babel.config.js
+│   ├── jsconfig.json
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   └── index.html
+│   ├── README.md
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   │   ├── logo.png
+│   │   │   └── logo.svg
+│   │   ├── components
+│   │   │   ├── NavBar.vue
+│   │   │   └── ProductCard.vue
+│   │   ├── main.js
+│   │   ├── pages
+│   │   │   ├── AdminCustomerPage.vue
+│   │   │   ├── AdminDashboard.vue
+│   │   │   ├── AdminManagerPage.vue
+│   │   │   ├── AdminProductPage.vue
+│   │   │   ├── CalculatorPage.vue
+│   │   │   ├── CartPage.vue
+│   │   │   ├── HomePage.vue
+│   │   │   ├── LoginPage.vue
+│   │   │   ├── ProductPage.vue
+│   │   │   └── RegisterPage.vue
+│   │   ├── plugins
+│   │   │   ├── vuetify.js
+│   │   │   └── webfontloader.js
+│   │   ├── router.js
+│   │   ├── services
+│   │   │   ├── adminService.js
+│   │   │   ├── api.js
+│   │   │   ├── cartService.js
+│   │   │   ├── clientService.js
+│   │   │   ├── productService.js
+│   │   │   └── tagService.js
+│   │   └── utils
+│   │       └── auth.js
+│   └── vue.config.js
+├── README.md
+├── src
+│   ├── app.js
+│   ├── controllers
+│   │   ├── admin.js
+│   │   ├── cart.js
+│   │   ├── client.js
+│   │   ├── product.js
+│   │   └── tag.js
+│   ├── middleware
+│   │   ├── authenticateToken.js
+│   │   └── onlyAdmin.js
+│   ├── models
+│   │   ├── admin.js
+│   │   ├── cart.js
+│   │   ├── client.js
+│   │   ├── product.js
+│   │   └── tag.js
+│   └── routes
+│       ├── admin.js
+│       ├── cart.js
+│       ├── client.js
+│       ├── index.js
+│       ├── product.js
+│       └── tag.js
+└── vue.config.js
+```
 
 ## 4. Test Plan
 
@@ -113,15 +216,15 @@ To test our program, we will try to use all of our functionalities in ways that 
 
 - Create an account 
 - Log out of account and log in again 
-- Log in with wrong password 
-- Sign in with an invalid email 
-- Sign in with future birth date 
-- Sign in with invalid Phone number format 
-- Sign in with invalid zip format 
-- Sign in with non number adress  00000
-- Sign in with a missing area 
-- Sign in with inhuman weight
-- Sign in as a 200+ year old
+- Log in with wrong password (Shouldn't be possible)
+- Sign in with an invalid email (Shouldn't be possible)
+- Sign in with future birth date (Shouldn't be possible)
+- Sign in with invalid Phone number format (Shouldn't be possible)
+- Sign in with invalid zip format (Shouldn't be possible)
+- Sign in with non number adress  (Shouldn't be possible)
+- Sign in with a missing area (Shouldn't be possible)
+- Sign in with inhuman weight (Shouldn't be possible)
+- Sign in as a 200+ year old (Shouldn't be possible)
 
 ### Product browsing with search and filter options.
 
@@ -133,16 +236,16 @@ To test our program, we will try to use all of our functionalities in ways that 
 ### Product purchase.
 
 - Click Product
-- Add to cart 0000
-- Add negative amount to cart
-- Add amount bigger than stock to cart
+- Add to cart 
+- Add negative amount to cart (Shouldn't be possible)
+- Add amount bigger than stock to cart (Shouldn't be possible)
 
 ### Cart management.
 
 - Increase amount of certain item
 - Decrease amount of certain item
-- Get negative amount of certain item
-- Get amount bigger than stock of certain item
+- Get negative amount of certain item (Shouldn't be possible)
+- Get amount bigger than stock of certain item (Shouldn't be possible)
 - Remove item
 - Get correct sum 
 - Check out
@@ -152,11 +255,11 @@ To test our program, we will try to use all of our functionalities in ways that 
 - Add product
 - Remove product
 - Edit existing product
-- Leave blank space in product information
-- Fill price with value <= 0
-- Fill quantity with negative number
-- Fill "quantity sold" with value <= 0 000000
-- Fill price with a float number 000000
+- Leave blank space in product information (Shouldn't be possible)
+- Fill price with value <= 0 (Shouldn't be possible)
+- Fill quantity with negative number (Shouldn't be possible)
+- Fill "quantity sold" with value <= 0 (Shouldn't be possible)
+- Fill price with a float number (Shouldn't be possible)
 - Add tags to product 
 - Remove tags from product
 
@@ -165,23 +268,23 @@ To test our program, we will try to use all of our functionalities in ways that 
 - Add customer
 - Remove customer
 - Edit existing customer
-- Leave blank space in customer information
-- Add inhuman weight
-- Add age 200+ 
-- Add future date as birth year
-- Add an invalid email
-- Add invalid Phone number format 
-- Add invalid zip format
-- Add non number adress 
+- Leave blank space in customer information (Shouldn't be possible)
+- Add inhuman weight (Shouldn't be possible)
+- Add age 200+ (Shouldn't be possible)
+- Add future date as birth year (Shouldn't be possible)
+- Add an invalid email (Shouldn't be possible)
+- Add invalid Phone number format (Shouldn't be possible)
+- Add invalid zip format (Shouldn't be possible)
+- Add non number adress (Shouldn't be possible)
 
 ### Admin management.
 
 - Add admin
 - Remove admin
 - Edit existing admin
-- Leave blank space in admin information
-- Add an invalid email
-- Add invalid Phone number format 
+- Leave blank space in admin information (Shouldn't be possible)
+- Add an invalid email (Shouldn't be possible)
+- Add invalid Phone number format (Shouldn't be possible)
 
 ### Revenue info.
 
@@ -192,23 +295,69 @@ To test our program, we will try to use all of our functionalities in ways that 
 
 - Click item
 - Add to cart
-- Add amount bigger than stock to cart
-- Add amount <=0 to cart
+- Add amount bigger than stock to cart (Shouldn't be possible)
+- Add amount <=0 to cart (Shouldn't be possible)
 
 ### BMI Calculator page
 
 - Select gender
 - Select Actity level
-- Input age > 150
-- Input age <= 0
-- Input inhuman age
-- Input inhuman weight
+- Input age > 150 (Shouldn't be possible)
+- Input age <= 0 (Shouldn't be possible)
+- Input inhuman age (Shouldn't be possible)
+- Input inhuman weight (Shouldn't be possible)
 - Calculate
 
 ## 5. Test Results.
+After the following the planned test, here are the results of said tests.
+
+### User authentication.
+
+Works as intended, allowing user to create account and log in as long as the user inputs appropriate data. 
+
+### Product browsing with search and filter options.
+
+Works as intended, search is accurate and products are filtered by tags. 
+
+### Product purchase.
+
+Works as intended, products can be clicked for more information and can only be bought in possible amounts. 
+
+### Cart management.
+
+- Increase amount of certain item
+- Decrease amount of certain item
+- Get negative amount of certain item (Shouldn't be possible)
+- Get amount bigger than stock of certain item (Shouldn't be possible)
+- Remove item
+- Get correct sum 
+- Check out
+
+### Admin dashboard for product management.
+
+Works as intended, products can be added, removed and edited without alowing inappropriate data.
+
+### Admin dashboard for customer management.
+
+Works as intended, customers can be added, removed and edited without alowing inappropriate data.
+
+### Admin management.
+
+Works as intended, admins can be added, removed and edited without alowing inappropriate data.
+
+### Revenue info.
+
+Works as intended, revenue value increases and decreases as intended.
+
+### Product page displaying its name, description and price
+
+Works as intended, product information is displayed properly.
+
+### BMI Calculator page
+
+Works as intended, accurate calculations without alowing inappropriate data. 
 
 ## 6. Build Procedures.
-# lazaros-pit
 
 ## Project setup
 ```
@@ -232,3 +381,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
