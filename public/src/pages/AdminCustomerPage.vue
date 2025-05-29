@@ -269,6 +269,10 @@ export default {
       if (this.isEditing) {
         try {
           const client = await getClientById(id);
+          if (client.birthDate) {
+            const date = new Date(client.birthDate);
+            client.birthDate = date.toISOString().split('T')[0]; // "1995-08-17"
+          }
           this.customerToBeAdded = client;
         } catch (err) {
           console.error('Erro ao buscar cliente:', err);
