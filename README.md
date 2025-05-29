@@ -1,7 +1,4 @@
-# lazaros-pit
 
-## Project setup
-```
 # Welcome to Lazaro's Pit!
 
 This project aims to develop a highly functional online supplement store as part of our Introduction to Web Development course. The website will also contain a helpful calculator for BMI and macro-nutrients to better guide ann fitness enjoyer. 
@@ -215,27 +212,6 @@ To test our program, we will try to use all of our functionalities in ways that 
 
 ## Project setup
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 npm install
 ```
 
