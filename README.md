@@ -25,6 +25,59 @@ Additional requirements for our store implementation:
 ## 2. Project Description
 
 We are developing a responsive web application that allows users to browse, search, and purchase supplements online, as well as calculate their BMI and daily macronutrient needs.
+### Navigation Diagram
+
+![Navigation](https://github.com/user-attachments/assets/9eb36547-544e-4f29-b0bc-9ede46100dac)
+
+Home page
+
+![Full_home_page](https://github.com/user-attachments/assets/5fc395e5-6e97-4cb4-b5cc-77e98db1f2d8)
+
+Filtered home page
+
+![Filtered_page](https://github.com/user-attachments/assets/8cf69310-f708-4a67-a327-dea40d72dc81)
+
+Home page after a search
+
+![Search_page](https://github.com/user-attachments/assets/2303df6f-adde-48d7-b463-379cfd97df68)
+
+Log in
+
+![Log_in](https://github.com/user-attachments/assets/76779528-023c-451c-809d-c570e91d0bde)
+
+Sign in 
+
+![Sign_in](https://github.com/user-attachments/assets/c8cc3921-2370-4fcb-8868-53e298dcc79b)
+
+Product page
+
+![Product_page](https://github.com/user-attachments/assets/7523a5ea-9689-4061-bccd-4acb3029526c)
+
+
+Cart
+
+![Cart](https://github.com/user-attachments/assets/5968bab0-93ce-4c39-8384-d992c5767aed)
+
+Admin dashboard
+
+![Admin_dashboard](https://github.com/user-attachments/assets/77662116-00a0-4565-ab74-a4d260cc07f3)
+
+Customers management
+
+![Customers](https://github.com/user-attachments/assets/ceda261d-dd41-45c1-8ed3-31e2b8cef92a)
+
+Products management
+
+![Products](https://github.com/user-attachments/assets/f9b68f1a-63e7-4bf8-84de-a6471eaaf566)
+
+Admin management
+
+![Admins](https://github.com/user-attachments/assets/f9e1af44-d2ef-4107-b8f9-d2923b6f47ae)
+
+**BMI Calculator**
+
+![Calculator](https://github.com/user-attachments/assets/b9d0474b-c38a-4fd0-aa40-9392d7e4326a)
+
 
 ### Functionalities 
 
@@ -69,10 +122,6 @@ We are developing a responsive web application that allows users to browse, sear
 - Secure system
   Customers can't access pages and functionalities exclusive to admins.
 
-### Navigation Diagram
-
-![Navigation](https://github.com/user-attachments/assets/9eb36547-544e-4f29-b0bc-9ede46100dac)
-
 
 ### Screen Mockups
 
@@ -115,7 +164,6 @@ The BMI and Macronutrient calculator results won't be saved on the server; they 
 
 ## 3. Comments about the code
 ```
-├── ad
 ├── babel.config.js
 ├── bin
 │   └── server.js
@@ -246,6 +294,8 @@ To test our program, we will try to use all of our functionalities in ways that 
 - Remove item
 - Get correct sum 
 - Check out
+- Fill Credit card information
+- Fill credit card information with characters (Shouldn't be possible)
 
 ### Admin dashboard for product management.
 
@@ -322,13 +372,7 @@ Works as intended, products can be clicked for more information and can only be 
 
 ### Cart management.
 
-- Increase amount of certain item
-- Decrease amount of certain item
-- Get negative amount of certain item (Shouldn't be possible)
-- Get amount bigger than stock of certain item (Shouldn't be possible)
-- Remove item
-- Get correct sum 
-- Check out
+Works as intended, products can be removed and added, credit card information has to be precise. 
 
 ### Admin dashboard for product management.
 
@@ -356,25 +400,82 @@ Works as intended, accurate calculations without alowing inappropriate data.
 
 ## 6. Build Procedures.
 
-## Project setup
-```
-npm install
-```
+This build procedure assumes the reviewer already has their git credentials set up, including a ssh key.
 
-### Compiles and hot-reloads for development
+The reviewer should start by cloning the git repo into a local repository by using
 ```
-npm run serve
+$ git clone git@github.com:bruno-lim4/WEB_LazarosPit.git
 ```
+Now the reviewer should add a .env file in the main project folder with JWT_SECRET=yourKey, this is for the JWT user authentication.
 
-### Compiles and minifies for production
+For the project configuration both nodejs and npm will be necessary. You can install them by their official website or by running on Ubuntu
 ```
-npm run build
+$ sudo apt update
+$ sudo apt install nodejs npm
 ```
+Also, the project uses mongo db, so it should be installed
 
-### Lints and fixes files
+The following mongo installation tutorial was made by ChatGPT:
 ```
-npm run lint
+$ curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
+  sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+  --dearmor
+
+$ echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
+https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | \
+  sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+$ sudo apt update
+
+$ sudo apt install -y mongodb-org
 ```
+After that, run it with 
+```
+$ sudo systemctl start mongod
+```
+Create a data base with:
+```
+$ mongosh
+
+$ use myDatabase
+```
+Now to install the dependencies and run both back and front end,
+
+In the base project file, run 
+```
+$ npm install
+```
+and then
+```
+$ npm start
+```
+now the back-end is running in localhost.
+
+In another terminal, navigate to the first public folder and again,
+```
+$ npm install
+```
+and now
+```
+$ npm run serve
+```
+this will make the front-end run in a localhost port.
+
+Now you can access the website. 
+
+For admin features, the first admin must be created using a post request to http://localhost:8080/admin by insomnia or postman.
+
+A possible admin json is:
+```
+{
+	"name": "admin",
+	"email": "admin@gmail.com",
+	"password": "admin123",
+	"phoneNumber": "123"
+}
+```
+with that, you can test and use our website.
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
