@@ -189,7 +189,6 @@ export default {
       this.cartItems.splice(index, 1);
     },
     checkout() {
-      alert(`Checkout - Total: R$ ${this.totalSum.toFixed(2)}`);
       this.checkoutDone = true;
     },
     submitCardForm() {
