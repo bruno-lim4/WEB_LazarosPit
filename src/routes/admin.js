@@ -6,13 +6,13 @@ import authenticateToken from "../middleware/authenticateToken.js";
 
 const router = express.Router();
 
-router.get('/', authenticateToken, onlyAdmin, controller.get);
-router.get('/:id',authenticateToken, onlyAdmin, controller.getById);
+router.get('/', controller.get);
+router.get('/:id', controller.getById);
 
 // tem q liberar se n ngm cria admin no começo
 router.post('/', controller.post);
 
-router.put('/:id', authenticateToken, onlyAdmin, controller.put);
-router.delete('/:id', authenticateToken, onlyAdmin, controller.delete);
+router.put('/:id', controller.put);
+router.delete('/:id', controller.delete);
 
 export default router;
