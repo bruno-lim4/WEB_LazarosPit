@@ -136,6 +136,20 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+  <v-dialog v-model="confirmDialog" max-width="400">
+    <v-card>
+      <v-card-title class="text-h6">Confirmar Exclusão</v-card-title>
+      <v-card-text>Tem certeza que deseja deletar este produto?</v-card-text>
+      <v-card-actions>
+        <v-spacer />
+        <v-btn text @click="confirmDialog = false">Cancelar</v-btn>
+        <v-btn color="red" text @click="confirmDeleteProduct">Deletar</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <v-snackbar v-model="snackbar.show" :timeout="3000" color="success">
+    {{ snackbar.message }}
+  </v-snackbar>
 </template>
 
 <script>
@@ -147,6 +161,10 @@ export default {
 
   data() {
     return {
+      snackbar: {
+        show: false,
+        message: ''
+      },
       products: [],
       tags: [],
       productToBeAdded: {
@@ -160,6 +178,8 @@ export default {
       },
       dialog: false,
       isEditing: false,
+      confirmDialog: false,
+      productIdToDelete: null,
       tagDialog: false,
       newTagName: '',
       formValid: false,
@@ -196,6 +216,10 @@ export default {
     },
     async fetchTags() {
       this.tags = await getTags();
+    },
+    showSuccess(message) {
+      this.snackbar.message = message;
+      this.snackbar.show = true;
     },
     async openProductDialog(id = null) {
       this.isEditing = !!id;
@@ -236,19 +260,33 @@ export default {
         alert("Erro ao criar tag.");
       }
     },
-    async deleteProduct(id) {
-      await deleteProduct(id);
-      await this.fetchProducts();
+    deleteProduct(id) {
+      this.productIdToDelete = id;
+      this.confirmDialog = true;
+    },
+    async confirmDeleteProduct() {
+      try {
+        await deleteProduct(this.productIdToDelete);
+        this.confirmDialog = false;
+        this.productIdToDelete = null;
+        this.showSuccess('Produto deletado com sucesso.');
+        await this.fetchProducts();
+      } catch (err) {
+        console.error("Erro ao deletar produto:", err);
+        alert("Erro ao deletar produto.");
+      }
     },
     async saveProduct() {
       if (this.isEditing) {
         await updateProduct(this.productToBeAdded._id, this.productToBeAdded);
+        this.showSuccess('Produto atualizado com sucesso.');
       } else {
         await createProduct(this.productToBeAdded);
+        this.showSuccess('Produto criado com sucesso.');
       }
       this.dialog = false;
       await this.fetchProducts();
-    }
+    },
   }
 }
 </script>

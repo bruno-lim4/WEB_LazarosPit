@@ -114,6 +114,9 @@
       </v-col>
     </v-row>
   </v-container>
+  <v-snackbar v-model="snackbar.show" :timeout="3000" color="success">
+    {{ snackbar.message }}
+  </v-snackbar>
 </template>
 
 <script>
@@ -125,6 +128,10 @@ export default {
   name: 'CartPage',
   data() {
     return {
+      snackbar: {
+        show: false,
+        message: ''
+      },
       cartItems: [],
       cart: {},
       creditCardNumber: '',
@@ -171,6 +178,10 @@ export default {
         this.cartItems = [];
       }
     },
+    showSuccess(message) {
+      this.snackbar.message = message;
+      this.snackbar.show = true;
+    },
     async incrementQuantity(index) {
       const product = await getProductById(this.cartItems[index].id);
       this.cartItems[index].quantity = (this.cartItems[index].quantity === product.quantity) ? this.cartItems[index].quantity : this.cartItems[index].quantity + 1;
@@ -187,6 +198,7 @@ export default {
     async removeItem(index) {
       await removeProductFromCart(this.cartItems[index].id);
       this.cartItems.splice(index, 1);
+      this.showSuccess('Item removido do carrinho com sucesso.');
     },
     checkout() {
       this.checkoutDone = true;
@@ -212,9 +224,19 @@ export default {
         const new_quant = prod.quantity - qtd;
         const new_sold = prod.quantitySold + qtd;
 
+        let active = true;
+
+        if (new_quant < 0) {
+          alert('Some cart items are out of stock')
+          return;
+        } else if (new_quant === 0) {
+          active = false;
+        }
+
         await updateProduct(prod_id, {
           "quantitySold": new_sold,
-          "quantity": new_quant
+          "quantity": new_quant,
+          "active": active
         })
       })
       
@@ -223,6 +245,7 @@ export default {
 
       await this.fetchCartItems();
       this.checkoutDone = false;
+      this.showSuccess('Compra finalizada com sucesso!');
     }
   },
   async mounted() {

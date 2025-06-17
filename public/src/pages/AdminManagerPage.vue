@@ -97,6 +97,20 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+  <v-dialog v-model="confirmDialog" max-width="400">
+    <v-card>
+      <v-card-title class="text-h6">Confirmar Exclusão</v-card-title>
+      <v-card-text>Tem certeza que deseja deletar este administrador?</v-card-text>
+      <v-card-actions>
+        <v-spacer />
+        <v-btn text @click="confirmDialog = false">Cancelar</v-btn>
+        <v-btn color="red" text @click="confirmDeleteAdmin">Deletar</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <v-snackbar v-model="snackbar.show" :timeout="3000" color="success">
+    {{ snackbar.message }}
+  </v-snackbar>
 </template>
 
 <script>
@@ -108,6 +122,10 @@ export default {
   data() {
     return {
       admins: [],
+      snackbar: {
+        show: false,
+        message: ''
+      },
       adminToBeAdded: {
         name: '',
         email: '',
@@ -116,6 +134,8 @@ export default {
       },
       dialog: false,
       isEditing: false,
+      confirmDialog: false,
+      adminIdToDelete: null,
       formValid: false,
       headers: [
         { title: 'Name', value: 'name', align: 'start' },
@@ -164,24 +184,41 @@ export default {
 
       this.dialog = true;
     },
-    async deleteAdmin(id) {
-      await deleteAdmin(id);
-      await this.fetchAdmins();
+    deleteAdmin(id) {
+      this.adminIdToDelete = id;
+      this.confirmDialog = true;
     },
-
+    showSuccess(message) {
+      this.snackbar.message = message;
+      this.snackbar.show = true;
+    },
     async saveAdmin() {
       const isValid = await this.$refs.form.validate();
       if (!isValid) return;
 
       if (this.isEditing) {
         await updateAdmin(this.adminToBeAdded._id, this.adminToBeAdded);
+        this.showSuccess('Administrador atualizado com sucesso.');
       } else {
         delete this.adminToBeAdded.createdAt;
         await createAdmin(this.adminToBeAdded);
+        this.showSuccess('Administrador criado com sucesso.');
       }
       this.dialog = false;
       await this.fetchAdmins();
-    }
+    },
+    async confirmDeleteAdmin() {
+      try {
+        await deleteAdmin(this.adminIdToDelete);
+        this.confirmDialog = false;
+        this.adminIdToDelete = null;
+        await this.fetchAdmins();
+        this.showSuccess('Administrador deletado com sucesso.');
+      } catch (err) {
+        console.error("Erro ao deletar admin:", err);
+        alert("Erro ao deletar administrador.");
+      }
+    },
   }
 }
 </script>

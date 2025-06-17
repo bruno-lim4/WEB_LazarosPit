@@ -180,6 +180,20 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+  <v-dialog v-model="confirmDialog" max-width="400">
+    <v-card>
+      <v-card-title class="text-h6">Confirmar Exclusão</v-card-title>
+      <v-card-text>Tem certeza que deseja deletar este cliente?</v-card-text>
+      <v-card-actions>
+        <v-spacer />
+        <v-btn variant="plain" text="Cancelar" @click="confirmDialog = false" />
+        <v-btn color="red" text="Deletar" @click="confirmDeleteCustomer" />
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <v-snackbar v-model="snackbar.show" :timeout="3000" color="success">
+    {{ snackbar.message }}
+  </v-snackbar>
 </template>
 
 <script>
@@ -197,7 +211,10 @@ export default {
   data() {
     return {
       formValid: false,
-
+      snackbar: {
+        show: false,
+        message: ''
+      },
       clients: [],
       customerToBeAdded: {
         name: '',
@@ -215,6 +232,8 @@ export default {
         complement: ''
       },
       dialog: false,
+      confirmDialog: false,
+      customerIdToDelete: null,
       isEditing: false,
       headers: [
         { title: 'Name', value: 'name', align: 'start' },
@@ -257,16 +276,17 @@ export default {
 
     }
   },
-
   async mounted() {
     await this.fetchClients();
   },
-
   methods: {
     async fetchClients() {
       this.clients = await getClients();
     },
-
+    showSuccess(message) {
+      this.snackbar.message = message;
+      this.snackbar.show = true;
+    },
     async openDialog(id = null) {
       this.isEditing = Boolean(id);
 
@@ -302,18 +322,30 @@ export default {
 
       this.dialog = true;
     },
-
-    async deleteCustomer(id) {
-      await deleteClient(id);
-      await this.fetchClients();
+    deleteCustomer(id) {
+      this.customerIdToDelete = id;
+      this.confirmDialog = true;
     },
-
+    async confirmDeleteCustomer() {
+      try {
+        await deleteClient(this.customerIdToDelete);
+        this.confirmDialog = false;
+        this.customerIdToDelete = null;
+        await this.fetchClients();
+        this.showSuccess('Cliente deletado com sucesso.');
+      } catch (err) {
+        console.error('Erro ao deletar cliente:', err);
+        alert('Não foi possível deletar o cliente.');
+      }
+    },
     async saveCustomer() {
       if (this.isEditing) {
         await updateClient(this.customerToBeAdded._id, this.customerToBeAdded);
+        this.showSuccess('Cliente atualizado com sucesso.');
       } else {
         delete this.customerToBeAdded.createdAt;
         await createClient(this.customerToBeAdded);
+        this.showSuccess('Cliente criado com sucesso.');
       }
       this.dialog = false;
       await this.fetchClients();
