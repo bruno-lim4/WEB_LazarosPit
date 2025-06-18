@@ -99,12 +99,12 @@
   </v-dialog>
   <v-dialog v-model="confirmDialog" max-width="400">
     <v-card>
-      <v-card-title class="text-h6">Confirmar Exclusão</v-card-title>
-      <v-card-text>Tem certeza que deseja deletar este administrador?</v-card-text>
+      <v-card-title class="text-h6">Confirm Deletion</v-card-title>
+      <v-card-text>Are you sure you want to delete this admin?</v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn text @click="confirmDialog = false">Cancelar</v-btn>
-        <v-btn color="red" text @click="confirmDeleteAdmin">Deletar</v-btn>
+        <v-btn text @click="confirmDialog = false">Cancel</v-btn>
+        <v-btn color="red" text @click="confirmDeleteAdmin">Delete</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -198,11 +198,11 @@ export default {
 
       if (this.isEditing) {
         await updateAdmin(this.adminToBeAdded._id, this.adminToBeAdded);
-        this.showSuccess('Administrador atualizado com sucesso.');
+        this.showSuccess('Admin updated successfully.');
       } else {
         delete this.adminToBeAdded.createdAt;
         await createAdmin(this.adminToBeAdded);
-        this.showSuccess('Administrador criado com sucesso.');
+        this.showSuccess('Admin created successfully.');
       }
       this.dialog = false;
       await this.fetchAdmins();
@@ -213,10 +213,10 @@ export default {
         this.confirmDialog = false;
         this.adminIdToDelete = null;
         await this.fetchAdmins();
-        this.showSuccess('Administrador deletado com sucesso.');
+        this.showSuccess('Admin deleted successfully.');
       } catch (err) {
         console.error("Erro ao deletar admin:", err);
-        alert("Erro ao deletar administrador.");
+        alert("Error deleting admin.");
       }
     },
   }

@@ -182,12 +182,12 @@
   </v-dialog>
   <v-dialog v-model="confirmDialog" max-width="400">
     <v-card>
-      <v-card-title class="text-h6">Confirmar Exclusão</v-card-title>
-      <v-card-text>Tem certeza que deseja deletar este cliente?</v-card-text>
+      <v-card-title class="text-h6">Confirm Deletion</v-card-title>
+      <v-card-text>Are you sure you want to delete this client?</v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn variant="plain" text="Cancelar" @click="confirmDialog = false" />
-        <v-btn color="red" text="Deletar" @click="confirmDeleteCustomer" />
+        <v-btn variant="plain" text="Cancel" @click="confirmDialog = false" />
+        <v-btn color="red" text="Delete" @click="confirmDeleteCustomer" />
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -332,7 +332,7 @@ export default {
         this.confirmDialog = false;
         this.customerIdToDelete = null;
         await this.fetchClients();
-        this.showSuccess('Cliente deletado com sucesso.');
+        this.showSuccess('Client deleted successfully.');
       } catch (err) {
         console.error('Erro ao deletar cliente:', err);
         alert('Não foi possível deletar o cliente.');
@@ -341,11 +341,11 @@ export default {
     async saveCustomer() {
       if (this.isEditing) {
         await updateClient(this.customerToBeAdded._id, this.customerToBeAdded);
-        this.showSuccess('Cliente atualizado com sucesso.');
+        this.showSuccess('Client updated successfully.');
       } else {
         delete this.customerToBeAdded.createdAt;
         await createClient(this.customerToBeAdded);
-        this.showSuccess('Cliente criado com sucesso.');
+        this.showSuccess('Client created successfully.');
       }
       this.dialog = false;
       await this.fetchClients();

@@ -138,12 +138,12 @@
   </v-dialog>
   <v-dialog v-model="confirmDialog" max-width="400">
     <v-card>
-      <v-card-title class="text-h6">Confirmar Exclusão</v-card-title>
-      <v-card-text>Tem certeza que deseja deletar este produto?</v-card-text>
+      <v-card-title class="text-h6">Confirm Deletion</v-card-title>
+      <v-card-text>Are you sure you want to delete this product?</v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn text @click="confirmDialog = false">Cancelar</v-btn>
-        <v-btn color="red" text @click="confirmDeleteProduct">Deletar</v-btn>
+        <v-btn text @click="confirmDialog = false">Cancel</v-btn>
+        <v-btn color="red" text @click="confirmDeleteProduct">Delete</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -269,7 +269,7 @@ export default {
         await deleteProduct(this.productIdToDelete);
         this.confirmDialog = false;
         this.productIdToDelete = null;
-        this.showSuccess('Produto deletado com sucesso.');
+        this.showSuccess('Product deleted successfully.');
         await this.fetchProducts();
       } catch (err) {
         console.error("Erro ao deletar produto:", err);
@@ -279,10 +279,10 @@ export default {
     async saveProduct() {
       if (this.isEditing) {
         await updateProduct(this.productToBeAdded._id, this.productToBeAdded);
-        this.showSuccess('Produto atualizado com sucesso.');
+        this.showSuccess('Product updated successfully.');
       } else {
         await createProduct(this.productToBeAdded);
-        this.showSuccess('Produto criado com sucesso.');
+        this.showSuccess('Product created successfully.');
       }
       this.dialog = false;
       await this.fetchProducts();

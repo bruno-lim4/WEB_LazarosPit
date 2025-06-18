@@ -198,9 +198,10 @@ export default {
     async removeItem(index) {
       await removeProductFromCart(this.cartItems[index].id);
       this.cartItems.splice(index, 1);
-      this.showSuccess('Item removido do carrinho com sucesso.');
+      this.showSuccess('Item removed from cart successfully.');
     },
     checkout() {
+      if (this.cartItems.length === 0) return;
       this.checkoutDone = true;
     },
     submitCardForm() {
@@ -245,7 +246,7 @@ export default {
 
       await this.fetchCartItems();
       this.checkoutDone = false;
-      this.showSuccess('Compra finalizada com sucesso!');
+      this.showSuccess('Order placed successfully!');
     }
   },
   async mounted() {
